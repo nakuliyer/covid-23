@@ -1,1 +1,2 @@
-from scrapers import *
+from .scrapers import *
+from .utils import *
