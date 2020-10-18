@@ -10,18 +10,8 @@ from utils import get_unix_timestamp
 
 class SplunkScraper():
     COOKIES_URL = "https://go.illinois.edu/COVIDTestingData"
-
-    # this url is really difficult to authenticate into
     SID_URL = "https://splunk-public.machinedata.illinois.edu/en-US/splunkd/__raw/servicesNS/splunk-public/uofi_" \
               "shield_public_APP/search/jobs"
-
-    # which is why this is hard coded and periodically updated, which kind of sucks rn
-    UNIQUE_ID_1 = "_c3BsdW5rLXB1YmxpYw_c3BsdW5rLXB1YmxpYw_dW9maV9zaGllbGRfcHVibGljX0FQUA__search1_1602716641.412791"
-    UNIQUE_ID_2 = "_c3BsdW5rLXB1YmxpYw_c3BsdW5rLXB1YmxpYw_dW9maV9zaGllbGRfcHVibGljX0FQUA__search2_1602719185.413424"
-    UNIQUE_ID_3 = "_c3BsdW5rLXB1YmxpYw_c3BsdW5rLXB1YmxpYw_dW9maV9zaGllbGRfcHVibGljX0FQUA__search3_1602715478.412529"
-    UNIQUE_ID_4 = "_c3BsdW5rLXB1YmxpYw_c3BsdW5rLXB1YmxpYw_dW9maV9zaGllbGRfcHVibGljX0FQUA__search4_1602715478.412530"
-
-    #
     BASE_SEARCHES_URL = "https://splunk-public.machinedata.illinois.edu/en-US/splunkd/__raw/services/search/jobs/"
     QUERY_PARAMS = "/results_preview?output_mode=json_cols&count={}&offset=0&show_metadata=true&_={}"
 
