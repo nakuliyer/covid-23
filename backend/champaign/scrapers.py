@@ -2,8 +2,12 @@
 from requests_html import HTMLSession
 import requests
 import json
-import re # RegEx!
-import itertools
+import re  # regex
+import sys
+import numpy as np
+import datetime
+import matplotlib.pyplot as plt
+sys.path.append('../../..')
 
 from utils import get_unix_timestamp
 
@@ -38,7 +42,8 @@ class SplunkScraper():
         # Mad hacking to follow:
         cookies = html.history[-2].headers["Set-Cookie"]
         main_key_name = "splunkd_8000="
-        main_key_value = cookies[cookies.find(main_key_name) + len(main_key_name): cookies.find(";", cookies.find(main_key_name))]
+        main_key_value = cookies[cookies.find(main_key_name) + len(main_key_name): cookies.find(";", cookies.find(
+            main_key_name))]
         token_name = "splunkweb_csrf_token_8000="
         token_value = cookies[cookies.find(token_name) + len(token_name): cookies.find(";", cookies.find(token_name))]
         cookies = main_key_name + main_key_value + "; " + token_name + token_value + "; " + "token_key=" + token_value
@@ -113,10 +118,42 @@ class SplunkScraper():
         json.dump(self.data_, f, indent=2)
         f.close()
 
+    def read_stored_data(self, path):
+        f = open(path, "r")
+        self.data_ = json.load(f)
+        f.close()
+
+    def plot_data_cases(self, path):
+        """ Returns plot-able data in the form of [[date-times], [percentages], [positive cases], [total trials]] """
+        self.read_stored_data(path)
+
+        def fmt_date(date_string):
+            d = datetime.datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%S.000-05:00')
+            return d.strftime("%Y-%m-%d")
+
+        times = list(map(fmt_date, self.data_["new_cases"][0]))
+        positives = np.array(list(map(int, self.data_["new_cases"][1])))
+        totals = np.array(list(map(int, self.data_["total_daily_tests_results"][1])))
+        percentages = positives / totals
+
+        plt.figure(figsize=(18, 10), dpi=180)
+        plt.title("Percentage of tests that were positive")
+        plt.plot(times, percentages)
+        plt.xticks(times[::10], visible=True, rotation="horizontal")
+        plt.savefig("backend/plt/champaign_%")
+        plt.figure(figsize=(18, 10), dpi=180)
+        plt.title("Tests and positive cases")
+        plt.plot(times, positives, label="Positive cases")
+        plt.plot(times, totals, label="Number of people tested")
+        plt.legend()
+        plt.xticks(times[::10], visible=True, rotation="horizontal")
+        plt.savefig("backend/plt/champaign_cases")
+
 
 if __name__ == "__main__":
     scraper = SplunkScraper()
-    scraper.create_session()
-    scraper.load_up_cookies()
-    if scraper.load_up_data():
-        scraper.store_data()
+    scraper.plot_data_cases("backend/champaign/local_save/data_1603327183609.dat")
+    # scraper.create_session()
+    # scraper.load_up_cookies()
+    # if scraper.load_up_data():
+    #     scraper.store_data()
