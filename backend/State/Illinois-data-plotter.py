@@ -13,7 +13,7 @@ for d in j:
         if key == "positive":
             yl.append(value)
         str2 = str(key) + ' : ' + str(value) + '\n'
-        str1 += str2 
+        str1 += str2
 #print(str1)
 plt.plot(xl, yl)
 plt.savefig("plot.png")
