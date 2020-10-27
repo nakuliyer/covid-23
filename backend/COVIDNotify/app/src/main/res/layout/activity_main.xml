@@ -1,18 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_main" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/champaign__" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:translationY="150dp"
+        app:srcCompat="@drawable/champaign_cases" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:translationY="300dp"
+        app:srcCompat="@drawable/illinois_cases" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:translationY="450dp"
+        app:srcCompat="@drawable/illinois_" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:translationY="600dp"
+        app:srcCompat="@drawable/nationwide_" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
