@@ -1,61 +1,55 @@
-import sqlite3
-from utils import gen_random
+import sys
+import os
+import time
+
+if __name__ == "__main__":
+    sys.path.append(os.path.abspath(os.path.join(__file__, "../../../")))
+from backend.contact_tracing.utils import convert_lat_long_to_m, sqlize_list
+from backend.utils.sql import SQLQueryMaker
 
 DB_LOCATION = "backend/contact_tracing/ct.sqlite"
 
-class AnonymousContact:
-    def __init__(self, first_secret, second_secret, time_stamp, distance):
-        self.first_secret = first_secret
-        self.second_secret = second_secret
-        self.time_stamp = time_stamp
-        self.distance = distance
 
-
-class ContactTracingSQL:
+class ContactTracing:
     def __init__(self):
-        self.sql = SQLQueryMaker()
+        self.sql = SQLQueryMaker(DB_LOCATION)
 
-        if not self.sql.table_exists("used_codes"):
-            self.sql.execute(""" CREATE TABLE used_codes (code varchar(255)) """)
+        if not self.sql.table_exists("ct_main"):
+            self.sql.execute(""" CREATE TABLE ct_main (first_secret varchar(255), second_secret varchar(255),""" +
+                             """ timestamp timestamp, distance decimal(20, 15)) """)
 
-    def get_new(self):
-        r = gen_random()
-        while self.sql.exists(""" SELECT code FROM used_codes WHERE code == "{}" """.format(r)):
-            r = gen_random()
-        self.sql.execute(""" INSERT INTO used_codes (code) VALUES ("{}") """.format(r))
-        return r
+    def create_contacts(self, max_distance=7, max_time=10000):
+        """ Goes through the locations table to find contacts within `max_distance` meters and `max_time` seconds and
+        adds to ct table """
+        all_locations = self.sql.execute(""" SELECT * FROM locations """).fetchall()
+        if len(all_locations) < 2:
+            return
 
+        for first_index in range(0, len(all_locations) - 1, 1):
+            for second_index in range(first_index + 1, len(all_locations), 1):
+                (code1, ts1, lat1, long1) = all_locations[first_index]
+                (code2, ts2, lat2, long2) = all_locations[second_index]
 
-class SQLQueryMaker:
-    def __init__(self):
-        self.conx = sqlite3.connect(DB_LOCATION)
-        self.cur = self.conx.cursor()
+                d = convert_lat_long_to_m(lat1, long1, lat2, long2)
+                if d <= max_distance and abs(ts1 - ts2) <= max_time:
+                    self.sql.execute(""" INSERT INTO ct_main (first_secret, second_secret, timestamp, distance)""" +
+                                     """ VALUES ("{}", "{}", {}, {}) """.format(code1, code2, ts1, d))
 
-    def execute(self, sql):
-        res = self.cur.execute(sql)
-        self.conx.commit()
-        return res
+        self.sql.execute(""" DELETE FROM locations """)
 
-    def exists(self, sql):
-        try:
-            return self.execute(sql).fetchone()[0] == 1
-        except TypeError:
-            return False
+    def routine_delete(self, max_period=1.21e+9):
+        """ Deletes all records before 14 days (or `max_period` milliseconds) """
+        before_date = int(time.time()) * 1000 - max_period
+        self.sql.execute(""" DELETE FROM locations WHERE timestamp < {} """.format(before_date))
 
-    def table_exists(self, table_name):
-        return self.exists("SELECT COUNT(*) FROM sqlite_master WHERE name == \"{}\";".format(table_name))
+    def check_compromised(self, my_codes):
+        """ Checks if someone with the given `my_codes` has been near a compromised code """
+        sql_my_codes = sqlize_list(my_codes)
+        interactions = self.sql.execute(""" SELECT * FROM ct_main WHERE (first_secret in {} or second_secret in {})"""
+                                        .format(sql_my_codes, sql_my_codes)).fetchall()
+        other_codes = []
+        for (first_secret, second_secret, timestamp, distance) in interactions:
+            other_codes.append(first_secret if second_secret in sql_my_codes else second_secret)  # the other person
+        sql_other_codes = ' or '.join(map(lambda x: "code==\"{}\"".format(x), other_codes))
+        return self.sql.exists(""" SELECT COUNT(*) FROM compromised_codes WHERE ({})""".format(sql_other_codes))
 
-    def close(self):
-        self.conx.commit()
-        self.conx.close()
-
-
-ct = ContactTracingSQL()
-print(ct.get_new())
-print(ct.get_new())
-
-users = AnonymousPersonSQL()
-
-# sqm = SQLQueryMaker()
-# sqm.create_contact_tracer_table()
-# sqm.close()
