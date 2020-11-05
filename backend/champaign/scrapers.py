@@ -33,7 +33,6 @@ class SplunkScraper():
         self.session_ = HTMLSession()
 
     def load_up_cookies(self):
-        """ TODO: Also load up SID_URL """
         r = self.session_.get(self.COOKIES_URL)
         r.html.render()
 
