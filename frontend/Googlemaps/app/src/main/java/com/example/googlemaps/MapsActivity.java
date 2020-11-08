@@ -64,6 +64,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Marker mCurrLocationMarker;
     FusedLocationProviderClient fusedLocationClient;
     Button btnLogout;
+    Button btnMenu;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener  authStateListener;
 //    private LocationCallback mLocationCallback;
@@ -73,6 +74,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         btnLogout =(Button) findViewById(R.id.logout);
+        btnMenu =(Button) findViewById(R.id.main);
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -93,40 +95,51 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 finish();
             }
         });
+
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openMenuActivity();
+            }
+        });
+
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        String URL = "https://api.covidtracking.com/v1/us/daily.json";
-        RequestQueue queue = Volley.newRequestQueue(this);
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, URL, null,
-                new com.android.volley.Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            JSONObject today = response.getJSONObject(0);
-                            JSONObject yesterday = response.getJSONObject(1);
-                            String positive1 = today.getString("positive");
-                            String positive2 = yesterday.getString("positive");
-                            Integer difference = Integer.parseInt(positive1) - Integer.parseInt(positive2);
-                            if (difference > 100000) {
-                                Log.d("Hello", difference.toString());
-                                addNotification();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("Response23", error.toString());
-            }
-        });
-        queue.add(request);
+//        String URL = "https://api.covidtracking.com/v1/us/daily.json";
+//        RequestQueue queue = Volley.newRequestQueue(this);
+//        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, URL, null,
+//                new com.android.volley.Response.Listener<JSONArray>() {
+//                    @Override
+//                    public void onResponse(JSONArray response) {
+//                        try {
+//                            JSONObject today = response.getJSONObject(0);
+//                            JSONObject yesterday = response.getJSONObject(1);
+//                            String positive1 = today.getString("positive");
+//                            String positive2 = yesterday.getString("positive");
+//                            Integer difference = Integer.parseInt(positive1) - Integer.parseInt(positive2);
+//                            if (difference > 100000) {
+//                                Log.d("Hello", difference.toString());
+//                                addNotification();
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Log.d("Response23", error.toString());
+//            }
+//        });
+//        queue.add(request);
 
+    }
+    public void openMenuActivity() {
+        startActivity(new Intent(this, MenuActivity.class));
     }
 
 
@@ -276,31 +289,31 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-    private void addNotification() {
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("COVID",
-                    "COVIDNotify",
-                    NotificationManager.IMPORTANCE_DEFAULT);
-            channel.setDescription("COVIDNotification");
-            mNotificationManager.createNotificationChannel(channel);
-        }
-
-        Intent intent = new Intent(this, MapsActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "COVID")
-                .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setContentTitle("COVID Outlier Detected")
-                .setContentText("70,000+ tested positive today")
-                .setContentIntent(pendingIntent)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(0, builder.build());
-
-
-    }
+//    private void addNotification() {
+//        NotificationManager mNotificationManager =
+//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+//            NotificationChannel channel = new NotificationChannel("COVID",
+//                    "COVIDNotify",
+//                    NotificationManager.IMPORTANCE_DEFAULT);
+//            channel.setDescription("COVIDNotification");
+//            mNotificationManager.createNotificationChannel(channel);
+//        }
+//
+//        Intent intent = new Intent(this, MapsActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+//
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "COVID")
+//                .setSmallIcon(R.mipmap.ic_launcher_round)
+//                .setContentTitle("COVID Outlier Detected")
+//                .setContentText("70,000+ tested positive today")
+//                .setContentIntent(pendingIntent)
+//                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+//
+//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+//        notificationManager.notify(0, builder.build());
+//
+//
+//    }
 }

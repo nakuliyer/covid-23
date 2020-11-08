@@ -60,8 +60,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
 
         if(firebaseAuth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
         }
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                signUpAgain();
+            }
+        });
 
     }
 
@@ -88,7 +94,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
 
-                            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
 
                         }
                         else {
@@ -102,5 +108,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public void signUpAgain() {
+        Toast.makeText(getApplicationContext(), "Please Sign up", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(getApplicationContext(), AuthActivity.class));
     }
 }

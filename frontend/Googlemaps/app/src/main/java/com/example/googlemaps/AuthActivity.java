@@ -76,7 +76,7 @@ public class AuthActivity extends AppCompatActivity {
         });
 
         if(firebaseAuth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
         }
     }
 }
