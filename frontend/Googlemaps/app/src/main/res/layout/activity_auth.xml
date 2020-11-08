@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="60dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/new_logo"/>
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:drawableLeft="@drawable/ic_email"
+        android:fontFamily="@font/muli_light"
+        android:textColor="@android:color/black"
+        android:hint="@string/enter_email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="225dp"
+        android:drawableLeft="@drawable/ic_pass"
+        android:fontFamily="@font/muli_light"
+        android:textColor="@android:color/black"
+        android:hint="@string/enter_password"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:background="@android:color/black"
+        android:fontFamily="@font/muli_black"
+        android:textColor="@android:color/white"
+        android:text="Sign Up" />
+
+    <TextView
+        android:id="@+id/loginin_redirect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="360dp"
+        android:fontFamily="@font/muli_light"
+        android:textColor="@android:color/darker_gray"
+        android:text="Already have an account ?"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/loginin_redirect_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="390dp"
+        android:background="@android:color/black"
+        android:fontFamily="@font/muli_black"
+        android:text="Login"
+        android:textColor="@android:color/white" />
+
+
+</RelativeLayout>
+
+
+
