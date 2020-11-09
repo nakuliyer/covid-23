@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_main" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:translationX="-90dp"
+        app:layout_anchorGravity="start|center"
+        app:srcCompat="@drawable/champaign__" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:translationX="90dp"
+        app:srcCompat="@drawable/champaign_cases" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:translationY="150dp"
+        android:translationX="-90dp"
+        app:srcCompat="@drawable/illinois_cases" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:translationY="150dp"
+        android:translationX="90dp"
+        app:srcCompat="@drawable/illinois_" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:translationY="300dp"
+        android:translationX="90dp"
+        app:srcCompat="@drawable/nationwide_" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="420dp"
+        android:layout_height="150dp"
+        android:translationX="-110dp"
+        android:translationY="300dp"
+        app:srcCompat="@drawable/nationwide_cases" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
