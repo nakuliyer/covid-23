@@ -1,0 +1,1254 @@
+{
+  "date": "2020-11-14",
+  "locations": {
+    "US": {
+      "location": {
+        "long": -95.712891,
+        "countryOrRegion": "United States",
+        "provinceOrState": null,
+        "county": null,
+        "isoCode": "US",
+        "lat": 37.09024
+      },
+      "updatedDateTime": "2020-11-14T21:01:13.3981586Z",
+      "news": [
+        {
+          "path": "_news/2020-11-14-trump-may-stop-by-a-dc-rally-on-saturday-amid-electoral-losses-and-failed-court-challenges.md",
+          "title": "Trump may \u2018stop by\u2019 a D.C. rally on Saturday amid electoral losses and failed court challenges.",
+          "excerpt": "Twelve House races remain uncalled, eleven days after the election. President-elect Joseph R. Biden Jr. called the federal response to the surging coronavirus cases \u201cwoefully lacking\u201d and urged President Trump to do more.",
+          "sourceUrl": null,
+          "webUrl": "https://www.nytimes.com/live/2020/11/14/us/joe-biden-trump",
+          "originalUrl": "https://www.nytimes.com/live/2020/11/14/us/joe-biden-trump",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": null,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": "https://www.nytimes.com/live/2020/11/14/us/joe-biden-trump.amp.html",
+          "cdnAmpWebUrl": "https://www-nytimes-com.cdn.ampproject.org/c/s/www.nytimes.com/live/2020/11/14/us/joe-biden-trump.amp.html",
+          "publishedDateTime": "2020-11-14T06:38:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "New York Times",
+            "domain": "nytimes.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-covid-19-cases-surged-in-pennsylvania-after-trump-visits-biden-celebrations.md",
+          "title": "COVID-19 cases surged in Pennsylvania after Trump visits, Biden celebrations",
+          "excerpt": "As Pennsylvania grapples with a record number of positive COVID-19 cases, concerns are mounting that some of the infections could be blamed on the 2020 presidential election. President Donald Trump's campaign rallies attracted tens of thousands of supporters in the waning days of his re-election bid in Pennsylvania.",
+          "sourceUrl": null,
+          "webUrl": "https://www.usatoday.com/story/news/politics/elections/2020/11/14/pa-covid-19-cases-surge-following-donald-trump-rally-joe-biden-celebrations/6293988002/",
+          "originalUrl": "https://www.usatoday.com/story/news/politics/elections/2020/11/14/pa-covid-19-cases-surge-following-donald-trump-rally-joe-biden-celebrations/6293988002/",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 122,
+          "tags": [
+            "US",
+            "US-PA"
+          ],
+          "images": [
+            {
+              "url": "https://www.gannett-cdn.com/presto/2020/10/14/USAT/54946d6d-9fc2-40c9-92bc-757823ae6d21-AFP_AFP_8T26QB.jpg?auto=webp&crop=5402,3039,x0,y379&format=pjpg&width=1200",
+              "width": 1200,
+              "height": 675,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://amp.usatoday.com/amp/6293988002",
+          "cdnAmpWebUrl": "https://amp-usatoday-com.cdn.ampproject.org/c/s/amp.usatoday.com/amp/6293988002",
+          "publishedDateTime": "2020-11-14T04:15:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "USA Today",
+            "domain": "usatoday.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-biden-solidifies-us-election-win-trump-says-time-will-tell-if-he-stays-in-power.md",
+          "title": "Biden solidifies U.S. election win, Trump says 'time will tell' if he stays in power",
+          "excerpt": "U.S. President-elect Joe Biden solidified his election victory on Friday by winning the state of Georgia, and President Donald Trump said \"time will tell\" if another administration takes over soon, the closest he has come to acknowledging Biden could succeed him.",
+          "sourceUrl": null,
+          "webUrl": "https://www.reuters.com/article/usa-election-int-idUSKBN27Q0L2",
+          "originalUrl": "https://www.reuters.com/article/usa-election-int-idUSKBN27Q0L2",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": null,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://s3.reutersmedia.net/resources/r/?m=02&d=20201113&t=2&i=1541139441&w=&fh=545px&fw=&ll=&pl=&sq=&r=LYNXMPEGAC0A7",
+              "width": 817,
+              "height": 545,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://mobile.reuters.com/article/amp/idUSKBN27Q0L2",
+          "cdnAmpWebUrl": "https://mobile-reuters-com.cdn.ampproject.org/c/s/mobile.reuters.com/article/amp/idUSKBN27Q0L2",
+          "publishedDateTime": "2020-11-14T03:58:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Reuters",
+            "domain": "reuters.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "Political Impact"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-trump-supporters-head-to-the-streets-as-he-pushes-false-election-claims.md",
+          "title": "Trump supporters head to the streets as he pushes false election claims",
+          "excerpt": "President Donald Trump's supporters will take to the streets on Saturday to back his unsubstantiated claims of election fraud as he pushes ahead with a flurry of longshot legal challenges to overturn President-elect Joe Biden's victory.",
+          "sourceUrl": null,
+          "webUrl": "https://www.reuters.com/article/us-usa-election-idUSKBN27U08C",
+          "originalUrl": "https://www.reuters.com/article/us-usa-election-idUSKBN27U08C",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 115,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://s3.reutersmedia.net/resources/r/?m=02&d=20201114&t=2&i=1541192310&w=&fh=545px&fw=&ll=&pl=&sq=&r=LYNXMPEGAD05M",
+              "width": 818,
+              "height": 545,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://mobile.reuters.com/article/amp/idUSKBN27U08C",
+          "cdnAmpWebUrl": "https://mobile-reuters-com.cdn.ampproject.org/c/s/mobile.reuters.com/article/amp/idUSKBN27U08C",
+          "publishedDateTime": "2020-11-14T03:46:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Reuters",
+            "domain": "reuters.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "Political Impact"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-donald-trump-threatens-to-withhold-covid-19-vaccine-from-new-york-in-new-feud-with-governor-cuomo.md",
+          "title": "Donald Trump threatens to withhold COVID-19 vaccine from New York in new feud with Governor Cuomo",
+          "excerpt": "In his first public comments in a week, Trump said the vaccine would not be available to residents of New York, accusing Cuomo, of playing politics.",
+          "sourceUrl": null,
+          "webUrl": "https://www.businessinsider.com/trump-threatens-to-withhold-vaccine-new-york-feuds-with-cuomo-2020-11",
+          "originalUrl": "https://www.businessinsider.com/trump-threatens-to-withhold-vaccine-new-york-feuds-with-cuomo-2020-11",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 92,
+          "tags": [
+            "US-NY",
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://i.insider.com/5faf9b0e402d49001924efbc?width=1200&format=jpeg",
+              "width": 1200,
+              "height": 600,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.businessinsider.com/trump-threatens-to-withhold-vaccine-new-york-feuds-with-cuomo-2020-11?amp",
+          "cdnAmpWebUrl": "https://www-businessinsider-com.cdn.ampproject.org/c/s/www.businessinsider.com/trump-threatens-to-withhold-vaccine-new-york-feuds-with-cuomo-2020-11?amp",
+          "publishedDateTime": "2020-11-14T02:47:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Business Insider",
+            "domain": "businessinsider.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-trump-supporters-rally-coronavirus-pandemic-masters-5-things-to-know-this-weekend.md",
+          "title": "Trump supporters rally, coronavirus pandemic, Masters: 5 things to know this weekend",
+          "excerpt": "Trump supporters plan D.C.\u00a0rallies\u00a0amid speculation extremists may attend, NASA and SpaceX historic launch and more things to start your weekend.",
+          "sourceUrl": null,
+          "webUrl": "https://www.usatoday.com/story/news/2020/11/14/trump-supporters-rally-coronavirus-masters-barack-obama-spacex-launch/6180632002/",
+          "originalUrl": "https://www.usatoday.com/story/news/2020/11/14/trump-supporters-rally-coronavirus-masters-barack-obama-spacex-launch/6180632002/",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 98,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://www.gannett-cdn.com/presto/2020/11/14/USAT/31ea0791-05db-461d-be5e-665bad0d1447-AP_Trump.jpg?auto=webp&crop=3714,2089,x21,y268&format=pjpg&width=1200",
+              "width": 1200,
+              "height": 675,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://amp.usatoday.com/amp/6180632002",
+          "cdnAmpWebUrl": "https://amp-usatoday-com.cdn.ampproject.org/c/s/amp.usatoday.com/amp/6180632002",
+          "publishedDateTime": "2020-11-14T02:35:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "USA Today",
+            "domain": "usatoday.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-bidens-team-says-he-will-get-daily-briefings-from-his-covid-19-coordinator-unlike-trump-who-often-blanks-his-task-force-for-weeks.md",
+          "title": "Biden's team says he will get daily briefings from his COVID-19 coordinator, unlike Trump who often blanks his task force for weeks",
+          "excerpt": "Incoming chief of staff Ron Klain said Biden will have a \"COVID coordinator\" with direct daily access to him, as Trump continues not to engage.",
+          "sourceUrl": null,
+          "webUrl": "https://www.businessinsider.com/biden-plans-regular-virus-briefings-contrast-trump-2020-11",
+          "originalUrl": "https://www.businessinsider.com/biden-plans-regular-virus-briefings-contrast-trump-2020-11",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 75,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://i.insider.com/5fae6be34652d400197442d8?width=1200&format=jpeg",
+              "width": 1200,
+              "height": 600,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.businessinsider.com/biden-plans-regular-virus-briefings-contrast-trump-2020-11?amp",
+          "cdnAmpWebUrl": "https://www-businessinsider-com.cdn.ampproject.org/c/s/www.businessinsider.com/biden-plans-regular-virus-briefings-contrast-trump-2020-11?amp",
+          "publishedDateTime": "2020-11-14T01:20:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Business Insider",
+            "domain": "businessinsider.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-dallas-county-reports-767-new-coronavirus-cases-1-death-as-texas-passes-1-million-confirmed-cases.md",
+          "title": "Dallas County reports 767 new coronavirus cases, 1 death as Texas passes 1 million confirmed cases",
+          "excerpt": "Dallas County on Friday reported 767 more coronavirus cases, all them considered new. One new COVID-19 death was also reported. The latest victim was",
+          "sourceUrl": null,
+          "webUrl": "https://www.dallasnews.com/news/public-health/2020/11/13/dallas-county-reports-767-new-coronavirus-cases-1-additional-death/",
+          "originalUrl": "https://www.dallasnews.com/news/public-health/2020/11/13/dallas-county-reports-767-new-coronavirus-cases-1-additional-death/",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 141,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://dmn-dallas-news-prod.cdn.arcpublishing.com/resizer/WFUbk1sCHaB8rbs4xitXvTgXwq8=/1200x630/smart/filters:no_upscale()/cloudfront-us-east-1.images.arcpublishing.com/dmn/N6C6OYC3XBHORBMDEICUCXLGVE.JPG",
+              "width": 1200,
+              "height": 630,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.dallasnews.com/news/public-health/2020/11/13/dallas-county-reports-767-new-coronavirus-cases-1-additional-death/?outputType=amp",
+          "cdnAmpWebUrl": "https://www-dallasnews-com.cdn.ampproject.org/c/s/www.dallasnews.com/news/public-health/2020/11/13/dallas-county-reports-767-new-coronavirus-cases-1-additional-death/?outputType=amp",
+          "publishedDateTime": "2020-11-13T23:07:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Dallas Morning News",
+            "domain": "dallasnews.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "New Cases"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-1076-new-cases-of-covid-19-in-oregon-as-gov-brown-announces-statewide-freeze.md",
+          "title": "1,076 new cases of COVID-19 in Oregon as Gov. Brown announces statewide 'freeze'",
+          "excerpt": "PORTLAND, Ore \u2014 The Oregon Health Authority (OHA) announced 1,076 new cases of COVID-19 on Friday, the second-highest daily total since the start of the pandemic. The increase marks the second time Oregon has seen more than 1,",
+          "sourceUrl": null,
+          "webUrl": "https://www.kgw.com/article/news/local/1076-new-cases-of-covid-19-in-oregon-as-gov-brown-reissues-stay-at-home-order/283-b76b75f0-816a-4712-9a0b-2f2230dec244",
+          "originalUrl": "https://www.kgw.com/article/news/local/1076-new-cases-of-covid-19-in-oregon-as-gov-brown-reissues-stay-at-home-order/283-b76b75f0-816a-4712-9a0b-2f2230dec244",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 185,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://media.kgw.com/assets/KGW/images/c07f8801-ab4f-4218-ba32-b510ece7be7b/c07f8801-ab4f-4218-ba32-b510ece7be7b_1140x641.jpg",
+              "width": 1140,
+              "height": 641,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.kgw.com/amp/article/news/local/1076-new-cases-of-covid-19-in-oregon-as-gov-brown-reissues-stay-at-home-order/283-b76b75f0-816a-4712-9a0b-2f2230dec244",
+          "cdnAmpWebUrl": "https://www-kgw-com.cdn.ampproject.org/c/s/www.kgw.com/amp/article/news/local/1076-new-cases-of-covid-19-in-oregon-as-gov-brown-reissues-stay-at-home-order/283-b76b75f0-816a-4712-9a0b-2f2230dec244",
+          "publishedDateTime": "2020-11-13T22:03:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "KGW8",
+            "domain": "kgw.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "New Cases"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-santa-clara-county-reports-362-new-coronavirus-cases-4-deaths.md",
+          "title": "Santa Clara County Reports 362 New Coronavirus Cases, 4 Deaths",
+          "excerpt": "There were 110 COVID-19 patients hospitalized in Santa Clara County as of Friday, of which 27 were being treated in intensive care units.",
+          "sourceUrl": null,
+          "webUrl": "https://patch.com/california/losgatos/santa-clara-county-reports-362-new-coronavirus-cases-4-deaths",
+          "originalUrl": "https://patch.com/california/losgatos/santa-clara-county-reports-362-new-coronavirus-cases-4-deaths",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 145,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://patch.com/img/cdn20/users/22137850/20201113/043627/styles/patch_image/public/covid-july-6___13162707565.jpg?width=984",
+              "width": 548,
+              "height": 411,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://patch.com/california/losgatos/amp/29080131/santa-clara-county-reports-362-new-coronavirus-cases-4-deaths",
+          "cdnAmpWebUrl": "https://patch-com.cdn.ampproject.org/c/s/patch.com/california/losgatos/amp/29080131/santa-clara-county-reports-362-new-coronavirus-cases-4-deaths",
+          "publishedDateTime": "2020-11-13T20:53:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Patch",
+            "domain": "patch.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "New Cases"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-biden-solidifies-us-election-victory-trump-hints-at-leaving-white-house.md",
+          "title": "Biden solidifies U.S. election victory, Trump hints at leaving White House",
+          "excerpt": "U.S. President-elect Joe Biden solidified his election victory on Friday when he won the state of Georgia as President Donald Trump said \"time will tell\" if another administration takes office soon, the closest he has come to acknowledging that Biden could succeed him.",
+          "sourceUrl": null,
+          "webUrl": "https://www.reuters.com/article/usa-election/biden-solidifies-us-victory-over-trump-306-232-electoral-votes-idUSKBN27T0IQ",
+          "originalUrl": "https://www.reuters.com/article/usa-election/biden-solidifies-us-victory-over-trump-306-232-electoral-votes-idUSKBN27T0IQ",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 143,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://s3.reutersmedia.net/resources/r/?m=02&d=20201113&t=2&i=1541139441&w=&fh=545px&fw=&ll=&pl=&sq=&r=LYNXMPEGAC0A7",
+              "width": 817,
+              "height": 545,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://mobile.reuters.com/article/amp/idUSKBN27T0IS",
+          "cdnAmpWebUrl": "https://mobile-reuters-com.cdn.ampproject.org/c/s/mobile.reuters.com/article/amp/idUSKBN27T0IS",
+          "publishedDateTime": "2020-11-13T20:39:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Reuters",
+            "domain": "reuters.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "Political Impact"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-biden-implores-trump-to-confront-a-surging-pandemic.md",
+          "title": "Biden Implores Trump to Confront a Surging Pandemic",
+          "excerpt": "President Trump broke his near-total silence on the coronavirus on Friday with an appearance in the Rose Garden in which he threatened to deny New York access to a vaccine.",
+          "sourceUrl": null,
+          "webUrl": "https://www.nytimes.com/2020/11/13/us/politics/biden-trump-coronavirus-transition.html",
+          "originalUrl": "https://www.nytimes.com/2020/11/13/us/politics/biden-trump-coronavirus-transition.html",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 100,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://static01.nyt.com/images/2020/11/13/us/politics/13dc-virus-trump-1/merlin_179910804_172a860f-45e7-4865-bc73-b5870003559d-facebookJumbo.jpg",
+              "width": 1050,
+              "height": 549,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.nytimes.com/2020/11/13/us/politics/biden-trump-coronavirus-transition.amp.html",
+          "cdnAmpWebUrl": "https://www-nytimes-com.cdn.ampproject.org/c/s/www.nytimes.com/2020/11/13/us/politics/biden-trump-coronavirus-transition.amp.html",
+          "publishedDateTime": "2020-11-13T20:22:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "New York Times",
+            "domain": "nytimes.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-in-the-united-states-qanon-is-struggling-the-conspiracy-theory-is-thriving-abroad.md",
+          "title": "In the United States, QAnon is struggling. The conspiracy theory is thriving abroad.",
+          "excerpt": "Trump conspiracy theory has found a home with far-right groups, some QAnon influencers are disillusioned by Trump\u2019s defeat, but many are still hopeful. \u201cAs the American\u2019s say, in God we trust,\u201d one poster on a German Telegram group wrote.",
+          "sourceUrl": null,
+          "webUrl": "https://www.washingtonpost.com/world/qanon-conspiracy-global-reach/2020/11/12/ca312138-13a5-11eb-a258-614acf2b906d_story.html",
+          "originalUrl": "https://www.washingtonpost.com/world/qanon-conspiracy-global-reach/2020/11/12/ca312138-13a5-11eb-a258-614acf2b906d_story.html",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 78,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": "https://www.washingtonpost.com/world/qanon-conspiracy-global-reach/2020/11/12/ca312138-13a5-11eb-a258-614acf2b906d_story.html?outputType=amp",
+          "cdnAmpWebUrl": "https://www-washingtonpost-com.cdn.ampproject.org/c/s/www.washingtonpost.com/world/qanon-conspiracy-global-reach/2020/11/12/ca312138-13a5-11eb-a258-614acf2b906d_story.html?outputType=amp",
+          "publishedDateTime": "2020-11-13T19:54:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Washington Post",
+            "domain": "washingtonpost.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-trump-and-republicans-are-making-the-coming-covid-19-nightmare-worse.md",
+          "title": "Trump and Republicans are making the coming covid-19 nightmare worse",
+          "excerpt": "If Republicans win one or both runoff elections in Georgia and keep the Senate, Biden will come asking them for a stimulus bill to address the pandemic. When he does, Majority Lea",
+          "sourceUrl": null,
+          "webUrl": "https://www.washingtonpost.com/opinions/2020/11/13/trump-republicans-are-making-coming-covid-nightmare-worse/",
+          "originalUrl": "https://www.washingtonpost.com/opinions/2020/11/13/trump-republicans-are-making-coming-covid-nightmare-worse/",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 85,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": "https://www.washingtonpost.com/opinions/2020/11/13/trump-republicans-are-making-coming-covid-nightmare-worse/?outputType=amp",
+          "cdnAmpWebUrl": "https://www-washingtonpost-com.cdn.ampproject.org/c/s/www.washingtonpost.com/opinions/2020/11/13/trump-republicans-are-making-coming-covid-nightmare-worse/?outputType=amp",
+          "publishedDateTime": "2020-11-13T16:22:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Washington Post",
+            "domain": "washingtonpost.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-14-trump-says-covid-19-vaccine-will-be-widely-available-by-april-but-not-to-new-york-due-to-cuomos-restrictions.md",
+          "title": "Trump says COVID-19 vaccine will be widely available by April but not to New York due to Cuomo's restrictions",
+          "excerpt": "President Trump, in his first public remarks since President-elect Joe Biden was projected the winner of the election, said the COVID-19 vaccine could be widely available as soon as April, but not in New York \u2014 due to Governor Andrew Cuomo's restrictions.",
+          "sourceUrl": null,
+          "webUrl": "https://www.cbsnews.com/news/trump-press-conference-operation-warp-speed-watch-live-stream-today-2020-11-13/",
+          "originalUrl": "https://www.cbsnews.com/news/trump-press-conference-operation-warp-speed-watch-live-stream-today-2020-11-13/",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 96,
+          "tags": [
+            "US",
+            "US-NY"
+          ],
+          "images": [
+            {
+              "url": "https://cbsnews3.cbsistatic.com/hub/i/r/2020/11/13/ec2e4457-992b-426c-8f7c-bd97a307b430/thumbnail/1200x630/738bd34dff635a1f56ed4c521709e8e7/trump.jpg",
+              "width": 1200,
+              "height": 630,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.cbsnews.com/amp/news/trump-press-conference-operation-warp-speed-watch-live-stream-today-2020-11-13/",
+          "cdnAmpWebUrl": "https://www-cbsnews-com.cdn.ampproject.org/c/s/www.cbsnews.com/amp/news/trump-press-conference-operation-warp-speed-watch-live-stream-today-2020-11-13/",
+          "publishedDateTime": "2020-11-13T15:33:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "CBS News",
+            "domain": "cbsnews.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-the-us-has-added-half-a-million-new-coronavirus-cases-since-monday.md",
+          "title": "The US has added half a million new coronavirus cases since Monday",
+          "excerpt": "The US has added more than half a million new Covid-19 cases since hitting 10 million on Monday ... which now total more than 67,000. In one part of Texas, officials have requested more mobile morgues. In Massachusetts, hospitalizations have increased ...",
+          "sourceUrl": null,
+          "webUrl": "https://www.gwinnettdailypost.com/features/health/the-us-has-added-half-a-million-new-coronavirus-cases-since-monday/article_5e826138-0a51-5111-a6d1-73508e3829aa.html",
+          "originalUrl": "https://www.gwinnettdailypost.com/features/health/the-us-has-added-half-a-million-new-coronavirus-cases-since-monday/article_5e826138-0a51-5111-a6d1-73508e3829aa.html",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 95,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": null,
+          "cdnAmpWebUrl": null,
+          "publishedDateTime": "2020-11-13T06:55:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Gwinnett Daily Post",
+            "domain": "gwinnettdailypost.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "New Cases"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-donald-trumps-shameful-endgame-puts-national-security-at-risk-rep-adam-schiff.md",
+          "title": "Donald Trump's shameful endgame puts national security at risk: Rep. Adam Schiff",
+          "excerpt": "Trump is preventing a seamless handoff during a deadly pandemic and damaging the country\u2019s readiness if Biden faces an early foreign policy crisis.",
+          "sourceUrl": null,
+          "webUrl": "https://www.usatoday.com/story/opinion/2020/11/13/trump-endgame-puts-national-security-risk-adam-schiff-column/6276508002/",
+          "originalUrl": "https://www.usatoday.com/story/opinion/2020/11/13/trump-endgame-puts-national-security-risk-adam-schiff-column/6276508002/",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 85,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://www.gannett-cdn.com/presto/2020/11/13/USAT/4fffaac4-9c6b-4f29-a468-f71e72d8e6fe-AFP_AFP_8V46MN.jpg?auto=webp&crop=4499,2531,x1,y0&format=pjpg&width=1200",
+              "width": 1200,
+              "height": 675,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://amp.usatoday.com/amp/6276508002",
+          "cdnAmpWebUrl": "https://amp-usatoday-com.cdn.ampproject.org/c/s/amp.usatoday.com/amp/6276508002",
+          "publishedDateTime": "2020-11-13T06:12:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "USA Today",
+            "domain": "usatoday.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-alaska-election-official-displayed-trump-gear-broke-no-laws.md",
+          "title": "Alaska Election Official Displayed Trump Gear, Broke No Laws",
+          "excerpt": "An Alaska community election official hung flags and displayed other items supporting the president near a polling station on election day but authorities say no laws were broken.",
+          "sourceUrl": null,
+          "webUrl": "https://www.usnews.com/news/best-states/alaska/articles/2020-11-13/alaska-election-official-displayed-trump-gear-broke-no-laws",
+          "originalUrl": "https://www.usnews.com/news/best-states/alaska/articles/2020-11-13/alaska-election-official-displayed-trump-gear-broke-no-laws",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 75,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": null,
+          "cdnAmpWebUrl": null,
+          "publishedDateTime": "2020-11-13T05:38:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "U.S. News & World Report",
+            "domain": "usnews.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "Political Impact"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-trump-is-turning-us-into-thailand-before-our-eyes.md",
+          "title": "Trump Is Turning U.S. Into Thailand Before Our Eyes",
+          "excerpt": "As Donald Trump goes full authoritarian, the globe is searching for parallels to discern where its biggest economy is headed.",
+          "sourceUrl": null,
+          "webUrl": "https://www.forbes.com/sites/williampesek/2020/11/13/trump-is-turning-us-into-thailand-before-our-eyes/",
+          "originalUrl": "https://www.forbes.com/sites/williampesek/2020/11/13/trump-is-turning-us-into-thailand-before-our-eyes/",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 70,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": "https://www.forbes.com/sites/williampesek/2020/11/13/trump-is-turning-us-into-thailand-before-our-eyes/amp/",
+          "cdnAmpWebUrl": "https://www-forbes-com.cdn.ampproject.org/c/s/www.forbes.com/sites/williampesek/2020/11/13/trump-is-turning-us-into-thailand-before-our-eyes/amp/",
+          "publishedDateTime": "2020-11-13T05:20:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Forbes",
+            "domain": "forbes.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-vdh-2-new-covid-19-deaths-in-southwest-virginia-100-new-cases.md",
+          "title": "VDH: 2 new COVID-19 deaths in Southwest Virginia, 100 new cases",
+          "excerpt": "The Virginia Department of Health reported 181,476 confirmed cases of COVID-19 in the Commonwealth on Friday. According to VDH, the total number of confirmed and probable",
+          "sourceUrl": null,
+          "webUrl": "https://www.wjhl.com/local-coronavirus-coverage/vdh-2-new-covid-19-deaths-in-southwest-virginia-100-new-cases/",
+          "originalUrl": "https://www.wjhl.com/local-coronavirus-coverage/vdh-2-new-covid-19-deaths-in-southwest-virginia-100-new-cases/",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 160,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": "https://www.wjhl.com/local-coronavirus-coverage/vdh-2-new-covid-19-deaths-in-southwest-virginia-100-new-cases/amp/",
+          "cdnAmpWebUrl": "https://www-wjhl-com.cdn.ampproject.org/c/s/www.wjhl.com/local-coronavirus-coverage/vdh-2-new-covid-19-deaths-in-southwest-virginia-100-new-cases/amp/",
+          "publishedDateTime": "2020-11-13T04:55:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "WJHL-TV",
+            "domain": "wjhl.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "New Cases"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-covid-19-continues-to-spread-at-an-alarming-rate-as-record-150k-new-cases-were-reported-on-thursday.md",
+          "title": "COVID-19 continues to spread at an alarming rate as record 150K new cases were reported on Thursday",
+          "excerpt": "The alarming, uncontrolled spread of COVID-19 continued on Thursday, as the U.S. set a record in new cases for a third straight day, surpassing 150,000 confirmed cases for the first time.",
+          "sourceUrl": null,
+          "webUrl": "https://www.thedenverchannel.com/news/national/coronavirus/covid-19-continues-to-spread-at-an-alarming-rate-as-record-150k-new-cases-were-reported-on-thursday",
+          "originalUrl": "https://www.thedenverchannel.com/news/national/coronavirus/covid-19-continues-to-spread-at-an-alarming-rate-as-record-150k-new-cases-were-reported-on-thursday",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 146,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://ewscripps.brightspotcdn.com/dims4/default/e2c7742/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fewscripps.brightspotcdn.com%2F56%2F77%2F33f19175410e80739485f4e3c931%2Fap-20316700959740.jpg",
+              "width": 1280,
+              "height": 720,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.thedenverchannel.com/news/national/coronavirus/covid-19-continues-to-spread-at-an-alarming-rate-as-record-150k-new-cases-were-reported-on-thursday?_amp=true",
+          "cdnAmpWebUrl": "https://www-thedenverchannel-com.cdn.ampproject.org/c/s/www.thedenverchannel.com/news/national/coronavirus/covid-19-continues-to-spread-at-an-alarming-rate-as-record-150k-new-cases-were-reported-on-thursday?_amp=true",
+          "publishedDateTime": "2020-11-13T04:39:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "7News and TheDenverChannel.com",
+            "domain": "thedenverchannel.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "New Cases"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-fauci-not-advising-biden-sees-no-reason-to-quit-trump-now-reuters-interview.md",
+          "title": "Fauci not advising Biden, sees no reason to quit Trump now: Reuters interview",
+          "excerpt": "Dr. Anthony Fauci, the top U.S. infectious disease expert, said he has had no contact with President-elect Joe Biden's coronavirus transition team and sees no reason to quit to join that effort when there is so much to do now to fight the surging pandemic.",
+          "sourceUrl": null,
+          "webUrl": "https://www.reuters.com/article/us-health-coronavirus-fauci-idUSKBN27T1J9",
+          "originalUrl": "https://www.reuters.com/article/us-health-coronavirus-fauci-idUSKBN27T1J9",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 97,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://s1.reutersmedia.net/resources/r/?m=02&d=20201113&t=2&i=1541106569&w=&fh=545px&fw=&ll=&pl=&sq=&r=LYNXMPEGAC0W0",
+              "width": 817,
+              "height": 545,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://mobile.reuters.com/article/amp/idUSKBN27T1J9",
+          "cdnAmpWebUrl": "https://mobile-reuters-com.cdn.ampproject.org/c/s/mobile.reuters.com/article/amp/idUSKBN27T1J9",
+          "publishedDateTime": "2020-11-13T04:17:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Reuters",
+            "domain": "reuters.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-a-key-biden-covid-19-advisor-says-trumps-warp-speed-vaccine-scheme-should-be-overhauled-to-put-more-emphasis-on-testing.md",
+          "title": "A key Biden COVID-19 advisor says Trump's 'Warp Speed' vaccine scheme should be overhauled to put more emphasis on testing",
+          "excerpt": "\"We need to be funding not just vaccines,\" Dr. Celine Gounder told the Financial Times, as she called for more money for COVID-19 testing.",
+          "sourceUrl": null,
+          "webUrl": "https://www.businessinsider.com/biden-gounder-covid-warp-speed-vaccines-testings-coronavirus-tests-covid19-2020-11",
+          "originalUrl": "https://www.businessinsider.com/biden-gounder-covid-warp-speed-vaccines-testings-coronavirus-tests-covid19-2020-11",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 79,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://i.insider.com/5fae5a501e8d5000198134c7?width=750&format=jpeg&auto=webp",
+              "width": 750,
+              "height": 562,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.businessinsider.com/biden-gounder-covid-warp-speed-vaccines-testings-coronavirus-tests-covid19-2020-11?amp",
+          "cdnAmpWebUrl": "https://www-businessinsider-com.cdn.ampproject.org/c/s/www.businessinsider.com/biden-gounder-covid-warp-speed-vaccines-testings-coronavirus-tests-covid19-2020-11?amp",
+          "publishedDateTime": "2020-11-13T03:28:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Business Insider",
+            "domain": "businessinsider.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-msnbcs-hayes-hits-trump-for-not-pushing-virtual-thanksgiving-after-cheering-crowds-celebrating-biden.md",
+          "title": "MSNBC's Hayes hits Trump for not pushing 'virtual' Thanksgiving after cheering crowds celebrating Biden",
+          "excerpt": "MSNBC host Chris Hayes\u00a0exchanged\u00a0Thanksgiving pumpkin pie for a wet blanket Tuesday, as he slammed the Trump administration for not encouraging Americans to hold \"virtual\" holiday celebrations\u00a0this year.",
+          "sourceUrl": null,
+          "webUrl": "https://www.foxnews.com/media/msnbc-chris-hayes-trump-virtual-thanksgiving-crowds-celebrate-biden",
+          "originalUrl": "https://www.foxnews.com/media/msnbc-chris-hayes-trump-virtual-thanksgiving-crowds-celebrate-biden",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 74,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://cf-images.us-east-1.prod.boltdns.net/v1/static/694940094001/e9cf11bc-935f-46fa-aff8-6af6eb0b2c01/21fef474-d123-4e2f-af4b-f9f4b064d33f/1280x720/match/image.jpg",
+              "width": 1280,
+              "height": 720,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.foxnews.com/media/msnbc-chris-hayes-trump-virtual-thanksgiving-crowds-celebrate-biden.amp",
+          "cdnAmpWebUrl": "https://www-foxnews-com.cdn.ampproject.org/c/s/www.foxnews.com/media/msnbc-chris-hayes-trump-virtual-thanksgiving-crowds-celebrate-biden.amp",
+          "publishedDateTime": "2020-11-13T02:35:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Fox News",
+            "domain": "foxnews.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-what-happens-if-trump-doesnt-concede.md",
+          "title": "What Happens if Trump Doesn\u2019t Concede?",
+          "excerpt": "Ross Douthat and Michelle Goldberg debate what the next 10 transitional weeks might look like and what went wrong with the polls.",
+          "sourceUrl": null,
+          "webUrl": "https://www.nytimes.com/2020/11/13/opinion/polls-trump-transition-concede.html",
+          "originalUrl": "https://www.nytimes.com/2020/11/13/opinion/polls-trump-transition-concede.html",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 70,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": "https://www.nytimes.com/2020/11/13/opinion/polls-trump-transition-concede.amp.html",
+          "cdnAmpWebUrl": "https://www-nytimes-com.cdn.ampproject.org/c/s/www.nytimes.com/2020/11/13/opinion/polls-trump-transition-concede.amp.html",
+          "publishedDateTime": "2020-11-13T02:04:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "New York Times",
+            "domain": "nytimes.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-trump-floats-improbable-survival-scenarios-as-he-ponders-his-future.md",
+          "title": "Trump Floats Improbable Survival Scenarios as He Ponders His Future",
+          "excerpt": "President Trump is simply trying to survive from one news cycle to the next. At a meeting on Wednesday at the White House, President Trump had something he wanted to discuss with his advisers, many of whom have told him his chances of succeeding at changing the results of the 2020 election are thin as a reed.",
+          "sourceUrl": null,
+          "webUrl": "https://www.nytimes.com/2020/11/12/us/politics/trump-future.html",
+          "originalUrl": "https://www.nytimes.com/2020/11/12/us/politics/trump-future.html",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 90,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://static01.nyt.com/images/2020/11/12/us/politics/12dc-memo1/12dc-memo1-facebookJumbo.jpg",
+              "width": 1050,
+              "height": 549,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.nytimes.com/2020/11/12/us/politics/trump-future.amp.html",
+          "cdnAmpWebUrl": "https://www-nytimes-com.cdn.ampproject.org/c/s/www.nytimes.com/2020/11/12/us/politics/trump-future.amp.html",
+          "publishedDateTime": "2020-11-13T00:51:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "New York Times",
+            "domain": "nytimes.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-as-trump-stews-over-election-he-mostly-ignores-the-public-duties-of-the-presidency.md",
+          "title": "As Trump stews over election, he mostly ignores the public duties of the presidency",
+          "excerpt": "The president has been mostly absent from view, focused on purging disloyal aides and tweeting grievances and misinformation even as the deadly pandemic rages.",
+          "sourceUrl": null,
+          "webUrl": "https://www.washingtonpost.com/politics/trump-ignores-duties/2020/11/12/02bfbc36-2507-11eb-a688-5298ad5d580a_story.html",
+          "originalUrl": "https://www.washingtonpost.com/politics/trump-ignores-duties/2020/11/12/02bfbc36-2507-11eb-a688-5298ad5d580a_story.html",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 109,
+          "tags": [
+            "US"
+          ],
+          "images": [
+            {
+              "url": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/7T66HWRFAII6XHCKBXDCILCICQ.jpg&w=1440",
+              "width": 1440,
+              "height": 960,
+              "title": null,
+              "attribution": null,
+              "isCached": true
+            }
+          ],
+          "type": "article",
+          "ampWebUrl": "https://www.washingtonpost.com/politics/trump-ignores-duties/2020/11/12/02bfbc36-2507-11eb-a688-5298ad5d580a_story.html?outputType=amp",
+          "cdnAmpWebUrl": "https://www-washingtonpost-com.cdn.ampproject.org/c/s/www.washingtonpost.com/politics/trump-ignores-duties/2020/11/12/02bfbc36-2507-11eb-a688-5298ad5d580a_story.html?outputType=amp",
+          "publishedDateTime": "2020-11-12T23:08:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Washington Post",
+            "domain": "washingtonpost.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "Political Impact"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-election-officials-directly-contradict-trump-on-voting-system-fraud.md",
+          "title": "Election Officials Directly Contradict Trump on Voting System Fraud",
+          "excerpt": "A group of federal, state and local officials working with a Department of Homeland Security agency declared flatly that the election was the most secure in the nation\u2019s history.",
+          "sourceUrl": null,
+          "webUrl": "https://www.nytimes.com/2020/11/12/us/politics/election-officials-contradict-trump.html",
+          "originalUrl": "https://www.nytimes.com/2020/11/12/us/politics/election-officials-contradict-trump.html",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 95,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": "https://www.nytimes.com/2020/11/12/us/politics/election-officials-contradict-trump.amp.html",
+          "cdnAmpWebUrl": "https://www-nytimes-com.cdn.ampproject.org/c/s/www.nytimes.com/2020/11/12/us/politics/election-officials-contradict-trump.amp.html",
+          "publishedDateTime": "2020-11-12T22:58:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "New York Times",
+            "domain": "nytimes.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus",
+            "Political Impact"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-trump-bars-investment-in-chinese-firms-with-military-ties.md",
+          "title": "Trump Bars Investment in Chinese Firms With Military Ties",
+          "excerpt": "The ban, which affects companies including Huawei, China Mobile and China Telecom, is the administration\u2019s first major move toward decoupling American financial markets from China.",
+          "sourceUrl": null,
+          "webUrl": "https://www.nytimes.com/2020/11/12/business/economy/trump-china-investment-ban.html",
+          "originalUrl": "https://www.nytimes.com/2020/11/12/business/economy/trump-china-investment-ban.html",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 70,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": "https://www.nytimes.com/2020/11/12/business/economy/trump-china-investment-ban.amp.html",
+          "cdnAmpWebUrl": "https://www-nytimes-com.cdn.ampproject.org/c/s/www.nytimes.com/2020/11/12/business/economy/trump-china-investment-ban.amp.html",
+          "publishedDateTime": "2020-11-12T19:24:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "New York Times",
+            "domain": "nytimes.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        },
+        {
+          "path": "_news/2020-11-13-trump-is-failing-to-provide-for-the-common-defense.md",
+          "title": "Trump is failing to provide for the common defense",
+          "excerpt": "Outcomes that meet the expectations of the public require unity of effort, shared trust, and, when required, the subordination of political and self-interest to the common good. More is at stake today than at any time in my lifetime,",
+          "sourceUrl": null,
+          "webUrl": "https://www.washingtonpost.com/opinions/2020/11/12/thad-allen-trump-transition-failure-to-cooperate-pandemic/",
+          "originalUrl": "https://www.washingtonpost.com/opinions/2020/11/12/thad-allen-trump-transition-failure-to-cooperate-pandemic/",
+          "featuredContent": null,
+          "highlight": null,
+          "heat": 70,
+          "tags": [
+            "US"
+          ],
+          "images": null,
+          "type": "article",
+          "ampWebUrl": "https://www.washingtonpost.com/opinions/2020/11/12/thad-allen-trump-transition-failure-to-cooperate-pandemic/?outputType=amp",
+          "cdnAmpWebUrl": "https://www-washingtonpost-com.cdn.ampproject.org/c/s/www.washingtonpost.com/opinions/2020/11/12/thad-allen-trump-transition-failure-to-cooperate-pandemic/?outputType=amp",
+          "publishedDateTime": "2020-11-12T18:26:00-08:00",
+          "updatedDateTime": null,
+          "provider": {
+            "name": "Washington Post",
+            "domain": "washingtonpost.com",
+            "images": null,
+            "publishers": null,
+            "authors": null
+          },
+          "locale": "en-us",
+          "categories": [
+            "news"
+          ],
+          "topics": [
+            "Coronavirus in US",
+            "Coronavirus"
+          ]
+        }
+      ]
+    }
+  }
+}
