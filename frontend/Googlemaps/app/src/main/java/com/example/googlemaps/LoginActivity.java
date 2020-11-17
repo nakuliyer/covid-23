@@ -59,6 +59,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
 
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AuthActivity.class));
+            }
+        });
+
         if(firebaseAuth.getCurrentUser()!=null){
             startActivity(new Intent(getApplicationContext(), MapsActivity.class));
         }
