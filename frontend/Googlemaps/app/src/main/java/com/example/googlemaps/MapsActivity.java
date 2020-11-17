@@ -58,6 +58,8 @@ import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    private boolean popup;
+    private Marker statMarker;
     private GoogleMap mMap;
     LocationRequest mLocationRequest;
     Location mLastLocation;
@@ -173,12 +175,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             fusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
             mMap.setMyLocationEnabled(true);
         }
-//        mMap.setMinZoomPreference(14);
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                if (!popup) {
+                    MarkerOptions options = new MarkerOptions();
+                    options.title("Stats in Champaign");
+                    options.snippet("This is where we will put the stats in Champaign when we get them.");
+                    options.position(latLng);
 
-//        // Add a marker in Sydney and move the camera
-//        LatLng far = new LatLng(40.098941, -88.22034);
-//        mMap.addMarker(new MarkerOptions().position(far).title("FAR"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(far, 14));
+                    statMarker = mMap.addMarker(options);
+                    popup = true;
+                } else {
+                    statMarker.remove();
+                    popup = false;
+                }
+            }
+        });
     }
 
     LocationCallback mLocationCallback = new LocationCallback() {
