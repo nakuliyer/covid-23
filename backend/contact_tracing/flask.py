@@ -1,4 +1,4 @@
-from backend.flask.app import app
+from __main__ import app
 from backend.contact_tracing.secret_handler import SecretHandler
 from backend.contact_tracing.contact_tracing import ContactTracing
 from backend.contact_tracing.locations import Locations
