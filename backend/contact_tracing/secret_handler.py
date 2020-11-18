@@ -2,11 +2,12 @@ import sys
 import os
 import time
 
+ROOT = os.path.abspath(os.path.join(__file__, "../../../"))
 if __name__ == "__main__":
-    sys.path.append(os.path.abspath(os.path.join(__file__, "../../../")))
+    sys.path.append(ROOT)
 from backend.contact_tracing.utils import gen_random, sqlize_list
 from backend.utils.sql import SQLQueryMaker
-DB_LOCATION = "backend/contact_tracing/ct.sqlite"
+DB_LOCATION = os.path.join(ROOT, "backend/contact_tracing/ct.sqlite")
 
 
 class SecretHandler:
