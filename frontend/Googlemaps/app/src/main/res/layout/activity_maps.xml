@@ -24,6 +24,21 @@
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
         android:layout_marginBottom="50dp"
+        android:fontFamily="@font/muli_black"
+        android:textColor="@android:color/white"
+        android:background="@android:color/black"
         android:text="Logout" />
+
+    <Button
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:id="@+id/btGeocoder"
+        android:text="See News For This State"
+        android:fontFamily="@font/muli_black"
+        android:textColor="@android:color/white"
+        android:background="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
 
 </RelativeLayout>
