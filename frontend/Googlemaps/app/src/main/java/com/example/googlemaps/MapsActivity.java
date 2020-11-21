@@ -71,7 +71,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Button btnMenu;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener  authStateListener;
-//    private LocationCallback mLocationCallback;
     private GeocoderReceiver geocoderReceiver;
     private Button btGeocoder;
     protected String locality;
@@ -317,33 +316,54 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             // permissions this app might request
         }
     }
+    public void openMenuActivity(){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+    }
 
 
-//    private void addNotification() {
-//        NotificationManager mNotificationManager =
-//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-//            NotificationChannel channel = new NotificationChannel("COVID",
-//                    "COVIDNotify",
-//                    NotificationManager.IMPORTANCE_DEFAULT);
-//            channel.setDescription("COVIDNotification");
-//            mNotificationManager.createNotificationChannel(channel);
-//        }
-//
-//        Intent intent = new Intent(this, MapsActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-//
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "COVID")
-//                .setSmallIcon(R.mipmap.ic_launcher_round)
-//                .setContentTitle("COVID Outlier Detected")
-//                .setContentText("70,000+ tested positive today")
-//                .setContentIntent(pendingIntent)
-//                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-//
-//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-//        notificationManager.notify(0, builder.build());
-//
-//
-//    }
+    private void addNotification() {
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("COVID",
+                    "COVIDNotify",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("COVIDNotification");
+            mNotificationManager.createNotificationChannel(channel);
+        }
+
+        Intent intent = new Intent(this, MapsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "COVID")
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentTitle("COVID Outlier Detected")
+                .setContentText("70,000+ tested positive today")
+                .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(0, builder.build());
+
+
+    }
+      protected void startIntentService() {
+        Intent intent = new Intent(this, GeocoderIntentService.class);
+        intent.putExtra("receiver", geocoderReceiver);
+        intent.putExtra("location", mLastLocation);
+        startService(intent);
+      }
+
+    // This class receives result from GeocoderIntentService
+      public class GeocoderReceiver extends ResultReceiver {
+          public GeocoderReceiver(Handler handler) {
+              super(handler);
+          }
+          @Override
+          protected void onReceiveResult(int resultCode, Bundle resultData) {
+              locality = resultData.getString("result");
+          }
+      }
 }

@@ -33,10 +33,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <service
-            android:name="MyNavigationService"
-            android:foregroundServiceType="location" >
-        </service>
+
 
         <service android:name=".GeocoderIntentService" android:exported="false" />
 
@@ -59,7 +56,7 @@
 
         <activity android:name=".GraphActivity"/>
         <activity android:name=".MenuActivity"/>
-
+        <activity android:name="NewsActivity"/>
     </application>
 
 </manifest>
