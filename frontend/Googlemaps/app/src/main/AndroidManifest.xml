@@ -32,9 +32,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
 
         <service
             android:name="MyNavigationService"
@@ -46,19 +43,22 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
-        </activity>
 
+
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:label="Login">
         </activity>
-
         <activity android:name="AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".GraphActivity"/>
+        <activity android:name=".MenuActivity"/>
 
     </application>
 
