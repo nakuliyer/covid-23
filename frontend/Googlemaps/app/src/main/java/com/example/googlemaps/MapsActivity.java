@@ -97,8 +97,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth.signOut();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                 finish();
             }
         });
