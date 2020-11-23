@@ -3,6 +3,8 @@ from backend.news.news import get_news
 from backend.contact_tracing.secret_handler import SecretHandler
 from backend.contact_tracing.contact_tracing import ContactTracing
 from backend.contact_tracing.locations import Locations
+from backend.champaign.scrapers import get_latest_data, get_old_data
+from backend.nation_state import get_nation_state_data
 
 app = Flask(__name__)
 
@@ -60,6 +62,26 @@ def routine_delete_all(max_period=1.21e+9):
     m.routine_delete(max_period)
 
 
+@app.route("/champaign")
+def get_champaign():
+    return get_latest_data()
+
+
+@app.route("/champaign_temp_fix")
+def get_champaign_temp_fix():
+    return get_old_data("backend/champaign/local_save/data_1606118897993.dat")
+
+
+@app.route("/nation")
+def get_nation():
+    return get_nation_state_data(0)
+
+
+@app.route("/illinois")
+def get_illinois():
+    return get_nation_state_data(1)
+
+
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
-    app.run(threaded=True, port=5000)
+    app.run(threaded=False, port=5000)
