@@ -1,7 +1,5 @@
-from flask import Flask
+from app import app
 from .news import get_news
-
-app = Flask(__name__)
 
 
 @app.route("/news")

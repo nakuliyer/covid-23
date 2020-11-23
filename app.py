@@ -1,7 +1,20 @@
-from __main__ import app
+from flask import Flask
+from backend.news.news import get_news
 from backend.contact_tracing.secret_handler import SecretHandler
 from backend.contact_tracing.contact_tracing import ContactTracing
 from backend.contact_tracing.locations import Locations
+
+app = Flask(__name__)
+
+
+@app.route('/ping')
+def ping_pong():
+    return 'pong'
+
+
+@app.route("/news")
+def news_route():
+    return get_news()
 
 
 @app.route("/get_new_code")
@@ -45,3 +58,8 @@ def routine_delete_all(max_period=1.21e+9):
     m.routine_delete(max_period)
     m = Locations()
     m.routine_delete(max_period)
+
+
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)

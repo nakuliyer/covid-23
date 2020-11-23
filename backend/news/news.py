@@ -2,7 +2,9 @@ import requests
 import json
 from datetime import date, time, datetime
 
-JSON_SAVE = "backend/news/save.json"
+import os
+ROOT = os.path.abspath(os.path.join(__file__, "../../../"))
+JSON_SAVE = os.path.join(ROOT, "backend/news/save.json")
 RAPID_API_URL = "https://coronavirus-smartable.p.rapidapi.com/news/v1/{}/"
 LOCATIONS = ["US", "US-IL", "US-MA", "US-CA"]
 
