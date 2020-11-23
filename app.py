@@ -3,6 +3,7 @@ from backend.news.news import get_news
 from backend.contact_tracing.secret_handler import SecretHandler
 from backend.contact_tracing.contact_tracing import ContactTracing
 from backend.contact_tracing.locations import Locations
+from backend.champaign.scrapers import get_latest_data
 
 app = Flask(__name__)
 
@@ -60,6 +61,11 @@ def routine_delete_all(max_period=1.21e+9):
     m.routine_delete(max_period)
 
 
+@app.route("/champaign")
+def get_champaign():
+    return get_latest_data()
+
+
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
-    app.run(threaded=True, port=5000)
+    app.run(threaded=False, port=5000)
