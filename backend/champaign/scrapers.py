@@ -156,9 +156,16 @@ def get_latest_data():
     scraper.create_session()
     scraper.load_up_cookies()
     if scraper.load_up_data():
+        scraper.store_data()
         return scraper.get_data()
     else:
         print("No data found")
+
+
+def get_old_data(f_name):
+    scraper = SplunkScraper()
+    scraper.read_stored_data(f_name)
+    return scraper.get_data()
 
 
 def plot_data_cases(f_name):
