@@ -20,7 +20,7 @@ def get_news():
         save_file = json.load(open(JSON_SAVE, "r+"))
         if save_file["date"] == str(date.today()):
             return {"use_cached": True, "result": save_file}
-    except (json.decoder.JSONDecodeError, KeyError):
+    except (json.decoder.JSONDecodeError, KeyError, FileNotFoundError):
         pass  # continue on
 
     headers = {
