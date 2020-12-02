@@ -24,6 +24,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -80,6 +81,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_baseline_map_24);
+        getSupportActionBar().setTitle("  Map");
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         btnLogout = findViewById(R.id.logout);
         btGeocoder = findViewById(R.id.btGeocoder);
         firebaseAuth = FirebaseAuth.getInstance();
@@ -349,6 +356,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         protected void onReceiveResult(int resultCode, Bundle resultData) {
             locality = resultData.getString("result");
         }
+    }
+
+    /**
+     * Appends the right side icons to the menu.
+     *
+     * @param menu the pre-existing menu
+     * @return true if it worked
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
 }
