@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="60dp">
+
+    <TextView
+        android:id="@+id/sign_up_redirect"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/change_password"
+        android:fontFamily="@font/muli_light"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/change_current_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:drawableLeft="@drawable/ic_pass"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/muli_light"
+        android:hint="@string/current_password"
+        android:inputType="textPassword"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/change_new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:drawableLeft="@drawable/ic_pass"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/muli_light"
+        android:hint="@string/new_password"
+        android:inputType="textPassword"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/back_to_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:background="@android:color/black"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/muli_black"
+        android:text="@string/back_to_map" />
+
+
+</RelativeLayout>
+
+
+
+

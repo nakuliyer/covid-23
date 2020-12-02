@@ -25,6 +25,7 @@ import android.os.Looper;
 import android.os.ResultReceiver;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -356,6 +357,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         protected void onReceiveResult(int resultCode, Bundle resultData) {
             locality = resultData.getString("result");
         }
+    }
+
+    public void onGoToSettings(MenuItem mi) {
+        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
     }
 
     /**

@@ -3,4 +3,8 @@
     <string name="title_activity_maps">Map</string>
     <string name="enter_password">Enter Password</string>
     <string name="enter_email">Enter Email</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="back_to_map">Back to Map</string>
+    <string name="change_password">Change Password</string>
 </resources>

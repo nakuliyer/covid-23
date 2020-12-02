@@ -38,32 +38,35 @@
 
         <service
             android:name="MyNavigationService"
-            android:foregroundServiceType="location" >
-        </service>
+            android:foregroundServiceType="location"></service>
 
-        <service android:name=".GeocoderIntentService" android:exported="false" />
+        <service
+            android:name=".GeocoderIntentService"
+            android:exported="false" />
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
-        </activity>
+            android:label="@string/title_activity_maps"></activity>
 
         <activity
             android:name=".LoginActivity"
             android:label="Login"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
         <activity
             android:name="AuthActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings" />
 
     </application>
 
