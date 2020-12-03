@@ -56,6 +56,7 @@ public class ContactTracingActivity extends AppCompatActivity {
     }
 
     public static class AlarmFragment extends androidx.fragment.app.DialogFragment {
+        @NonNull
         public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("EMERGENCY BUTTON");
