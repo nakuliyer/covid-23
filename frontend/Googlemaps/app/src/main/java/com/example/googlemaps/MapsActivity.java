@@ -74,30 +74,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Button prediction;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener  authStateListener;
-<<<<<<< HEAD
+
 //    private LocationCallback mLocationCallback;
     private GeocoderReceiver geocoderReceiver;
     private Button btGeocoder;
     protected String locality;
 
-=======
     String coordinates;
->>>>>>> master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-<<<<<<< HEAD
+
         btnLogout = findViewById(R.id.logout);
         btGeocoder = findViewById(R.id.btGeocoder);
-=======
+
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
         }
         btnLogout =(Button) findViewById(R.id.logout);
         prediction =(Button) findViewById(R.id.prediction);
->>>>>>> master
+
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
