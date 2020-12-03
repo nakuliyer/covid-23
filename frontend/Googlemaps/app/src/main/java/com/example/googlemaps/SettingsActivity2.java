@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity2 extends AppCompatActivity {
     Button backButton;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
