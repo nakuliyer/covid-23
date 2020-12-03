@@ -19,15 +19,19 @@ Notes:
 * `result.locations` is a dictionary of locations with keys of the form `US-<2 letter state code>`, as in `US-MA`
 * `use_cached` is `true` if we used the cache on heroku (this should only happen once per day globally)
 
-## Contact Tracing
+## Contact tracing: get a new code
+### Usage
+The front-end should maintain a list of codes and fetch a new code every few days. This method is very much a test method and kind of useless if you have a random number generator, but ensures that the random codes are unique.
+
 ### Request
 `GET /get_new_code/`
 ### Response
 `XP0SLBENH79ORLQOZXYUJFVE`, a string that can be stored locally
-<hr/>
 
+## Contact tracing: check compromised
 ### Request
 `POST /check_compromised/`
+
 Body:
 ```angular2
 { "codes": ["all", "my", "codes", "in", "the", "past", "few", "days"] }
@@ -35,8 +39,34 @@ Body:
 ### Response
 * `result` is `true` if we've been near someone with covid, `false` otherwise
 
+## Contact tracing: post location
+### Usage
+As often as possible, limited by security features on the OS.
+
 ### Request
 `POST /post_location/`
+
+Body:
+```angular2
+{ "code": "our current code", "lat": some_latitude, "long": some_longitude, "time": some_optional_time_else_well_find_current_time}
+```
+### Response
+`{"success": True}`
+
+## Contact tracing: post compromised codes
+### Usage
+If we have covid
+
+### Request
+`POST /post_compromised_code/`
+
+Body:
+```angular2
+{ "codes": ["all", "my", "codes", "in", "the", "past", "few", "days"] }
+```
+
+### Response
+`{"success": True}`
 
 # Backend CLI
 ```

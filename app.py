@@ -37,7 +37,11 @@ def check_compromised():
 def post_location():
     """ sends phone's location,current time, and present code to db  """
     m = Locations()
-    m.report_location(request.json["code"], request.json["lat"], request.json["long"], request.json["time"])
+    if "time" in request.json:
+        m.report_location(request.json["code"], request.json["lat"], request.json["long"], request.json["time"])
+    else:
+        m.report_location(request.json["code"], request.json["lat"], request.json["long"])
+    return {"success": True}
 
 
 @app.route("/post_compromised_codes", methods=["POST"])
@@ -45,13 +49,15 @@ def post_compromised_code():
     """ sends infected persons codes to the db """
     m = SecretHandler()
     m.mark_compromised(request.json["codes"])
+    return {"success": True}
 
 
 @app.route("/create_contacts", methods=["POST"])
 def create_contacts(max_distance=7, max_time=10000):
     """ goes through locations, creates contacts, and deletes locations table """
     m = ContactTracing()
-    return m.create_contacts(max_distance, max_time)
+    m.create_contacts(max_distance, max_time)
+    return {"success": True}
 
 
 @app.route("/route_delete_all", methods=["DELETE"])
