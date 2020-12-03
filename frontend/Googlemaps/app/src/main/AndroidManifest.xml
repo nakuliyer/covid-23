@@ -50,7 +50,7 @@
 
         <activity
             android:name="MapsActivity"
-            android:label="@string/title_activity_maps">
+            android:label="Maps">
         </activity>
         <activity
             android:name=".LoginActivity"
