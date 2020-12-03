@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/change_password"
         android:fontFamily="@font/muli_light"
         android:textColor="@android:color/darker_gray"
@@ -43,14 +43,14 @@
         android:textColor="@android:color/black" />
 
     <Button
-        android:id="@+id/back_to_map"
+        android:id="@+id/log_out"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:background="@android:color/black"
         android:textColor="@android:color/white"
         android:fontFamily="@font/muli_black"
-        android:text="@string/back_to_map" />
+        android:text="@string/log_out" />
 
 
 </RelativeLayout>

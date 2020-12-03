@@ -8,19 +8,25 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SettingsActivity extends AppCompatActivity {
-  Button backButton;
+  FirebaseAuth firebaseAuth;
+  Button logOutButton;
 
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_settings);
 
-    backButton = findViewById(R.id.back_to_map);
+    logOutButton = findViewById(R.id.log_out);
 
-    backButton.setOnClickListener(new View.OnClickListener() {
+    firebaseAuth = FirebaseAuth.getInstance();
+
+    logOutButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+        firebaseAuth.signOut();
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
       }
     });
   }
