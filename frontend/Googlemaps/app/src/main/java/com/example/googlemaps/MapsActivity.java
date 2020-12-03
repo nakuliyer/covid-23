@@ -6,7 +6,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -24,6 +23,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -51,7 +52,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -70,7 +70,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location mLastLocation;
     Marker mCurrLocationMarker;
     FusedLocationProviderClient fusedLocationClient;
-    Button btnLogout;
     Button prediction;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener  authStateListener;
@@ -87,13 +86,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        btnLogout = findViewById(R.id.logout);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_baseline_map_24);
+        getSupportActionBar().setTitle("  Map");
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         btGeocoder = findViewById(R.id.btGeocoder);
 
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
         }
-        btnLogout =(Button) findViewById(R.id.logout);
+
         prediction =(Button) findViewById(R.id.prediction);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -120,13 +123,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 intent.putExtra("prediction_values", values);
                 startActivity(intent);
                 //startActivity(new Intent(getApplicationContext(), PredictionActivity.class));
-            }
-        });
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-                finish();
             }
         });
 
@@ -376,6 +372,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         protected void onReceiveResult(int resultCode, Bundle resultData) {
             locality = resultData.getString("result");
         }
+    }
+
+    public void onGoToSettings(MenuItem mi) {
+        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+    }
+
+    /**
+     * Appends the right side icons to the menu.
+     *
+     * @param menu the pre-existing menu
+     * @return true if it worked
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
 }

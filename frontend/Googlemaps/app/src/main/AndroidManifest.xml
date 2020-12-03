@@ -19,13 +19,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".SettingsActivity"
-            android:label="Settings">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.googlemaps.LoginActivity" />
-        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -43,20 +36,21 @@
 
         <service
             android:name=".MyNavigationService"
-            android:foregroundServiceType="location"></service>
+            android:foregroundServiceType="location" />
+
         <service
             android:name=".GeocoderIntentService"
             android:exported="false" />
 
         <activity
-            android:name="MapsActivity"
-            android:label="Maps">
-        </activity>
+            android:name=".MapsActivity"
+            android:label="Maps" />
+
         <activity
             android:name=".LoginActivity"
             android:label="Login"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -67,12 +61,19 @@
 
         <activity
             android:name="AuthActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity
             android:name=".PredictionActivity"
-            android:label="Prediction">
+            android:label="Prediction" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.googlemaps.LoginActivity" />
         </activity>
     </application>
 
