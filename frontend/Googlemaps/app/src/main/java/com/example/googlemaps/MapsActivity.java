@@ -35,6 +35,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -66,14 +70,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location mLastLocation;
     Marker mCurrLocationMarker;
     FusedLocationProviderClient fusedLocationClient;
-    Button btnLogout;
+    Button prediction;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener  authStateListener;
+
 //    private LocationCallback mLocationCallback;
     private GeocoderReceiver geocoderReceiver;
     private Button btGeocoder;
     protected String locality;
 
+    String coordinates;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +91,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         getSupportActionBar().setTitle("  Map");
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-        btnLogout = findViewById(R.id.logout);
         btGeocoder = findViewById(R.id.btGeocoder);
+
+        if (!Python.isStarted()) {
+            Python.start(new AndroidPlatform(this));
+        }
+
+        prediction =(Button) findViewById(R.id.prediction);
+
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -98,13 +110,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         };
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
+        prediction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth.signOut();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                finish();
+                Python py = Python.getInstance();
+                final PyObject pyobj = py.getModule("script");
+                final PyObject obj = pyobj.callAttr("main", coordinates);
+                float[] values = obj.toJava(float[].class);
+                Log.d("Value 1", String.valueOf(values[0]));
+                Log.d("Value 2", String.valueOf(values[1]));
+                Intent intent = new Intent(getApplicationContext(), PredictionActivity.class);
+                intent.putExtra("prediction_values", values);
+                startActivity(intent);
+                //startActivity(new Intent(getApplicationContext(), PredictionActivity.class));
             }
         });
 
@@ -139,7 +157,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             String positive2 = yesterday.getString("positive");
                             Integer difference = Integer.parseInt(positive1) - Integer.parseInt(positive2);
                             if (difference > 100000) {
-                                Log.d("Hello", difference.toString());
                                 addNotification();
                             }
                         } catch (JSONException e) {
@@ -225,6 +242,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 //The last location in the list is the newest
                 Location location = locationList.get(locationList.size() - 1);
                 Log.i("MapsActivity", "Location: " + location.getLatitude() + " " + location.getLongitude());
+                coordinates = location.getLatitude() + ", " + location.getLongitude();
                 mLastLocation = location;
                 if (mCurrLocationMarker != null) {
                     mCurrLocationMarker.remove();
@@ -328,7 +346,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "COVID")
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("COVID Outlier Detected")
-                .setContentText("70,000+ tested positive today")
+                .setContentText("100,000+ tested positive today")
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
@@ -357,7 +375,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public void onGoToSettings(MenuItem mi) {
-        startActivity(new Intent(getApplicationContext(), SettingsActivity2.class));
+        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
     }
 
     /**

@@ -15,21 +15,6 @@
         tools:context=".MapsActivity" />
 
     <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="50dp"
-        android:fontFamily="@font/muli_black"
-        android:textColor="@android:color/white"
-        android:background="@android:color/black"
-        android:text="Logout" />
-
-    <Button
         android:layout_width="40mm"
         android:layout_height="wrap_content"
         android:id="@+id/btGeocoder"
@@ -40,5 +25,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp" />
 
+
+    <Button
+        android:id="@+id/prediction"
+        android:layout_width="178dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="154dp"
+        android:layout_marginRight="154dp"
+        android:layout_marginBottom="49dp"
+        android:text="View Prediction" />
 
 </RelativeLayout>

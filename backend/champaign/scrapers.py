@@ -1,4 +1,6 @@
 # this is an upgraded equivalent of requests that uses chromium internally to load stuff with javascript
+from threading import Thread
+
 from requests_html import HTMLSession
 import requests
 import json
@@ -9,10 +11,10 @@ import datetime
 import matplotlib.pyplot as plt
 sys.path.append('../../..')
 
-from utils import get_unix_timestamp
+from .utils import get_unix_timestamp
 
 
-class SplunkScraper():
+class SplunkScraper:
     COOKIES_URL = "https://go.illinois.edu/COVIDTestingData"
     SID_URL = "https://splunk-public.machinedata.illinois.edu/en-US/splunkd/__raw/servicesNS/splunk-public/uofi_" \
               "shield_public_APP/search/jobs"
@@ -34,7 +36,7 @@ class SplunkScraper():
 
     def load_up_cookies(self):
         r = self.session_.get(self.COOKIES_URL)
-        r.html.render()
+        r.html.arender()
 
         html = requests.get("https://go.illinois.edu/COVIDTestingData", allow_redirects=True)
 
@@ -149,10 +151,28 @@ class SplunkScraper():
         plt.savefig("backend/plt/champaign_cases")
 
 
-if __name__ == "__main__":
+def get_latest_data():
     scraper = SplunkScraper()
-    scraper.plot_data_cases("backend/champaign/local_save/data_1603327183609.dat")
-    # scraper.create_session()
-    # scraper.load_up_cookies()
-    # if scraper.load_up_data():
-    #     scraper.store_data()
+    scraper.create_session()
+    scraper.load_up_cookies()
+    if scraper.load_up_data():
+        scraper.store_data()
+        return scraper.get_data()
+    else:
+        print("No data found")
+
+
+def get_old_data(f_name):
+    scraper = SplunkScraper()
+    scraper.read_stored_data(f_name)
+    return scraper.get_data()
+
+
+def plot_data_cases(f_name):
+    scraper = SplunkScraper()
+    scraper.plot_data_cases(f_name)
+
+
+if __name__ == "__main__":
+    print(get_latest_data())
+    # plot_data_cases("backend/champaign/local_save/data_1603327183609.dat")
