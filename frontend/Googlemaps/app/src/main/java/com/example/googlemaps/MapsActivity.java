@@ -20,7 +20,9 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
+import android.os.ResultReceiver;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -72,18 +74,30 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Button prediction;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener  authStateListener;
+<<<<<<< HEAD
+//    private LocationCallback mLocationCallback;
+    private GeocoderReceiver geocoderReceiver;
+    private Button btGeocoder;
+    protected String locality;
+
+=======
     String coordinates;
-//  private LocationCallback mLocationCallback;
+>>>>>>> master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+<<<<<<< HEAD
+        btnLogout = findViewById(R.id.logout);
+        btGeocoder = findViewById(R.id.btGeocoder);
+=======
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
         }
         btnLogout =(Button) findViewById(R.id.logout);
         prediction =(Button) findViewById(R.id.prediction);
+>>>>>>> master
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -113,11 +127,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth.signOut();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                 finish();
             }
         });
+
+        btGeocoder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mMap.isMyLocationEnabled()) {
+                    startIntentService();
+                    Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
+                    intent.putExtra("State name", locality);
+                    startActivity(intent);
+                }
+            }
+        });
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -152,8 +178,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         queue.add(request);
 
     }
-
-
 
     @Override
     public void onPause() {
@@ -243,7 +267,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
     };
-    public  static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private void checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -298,10 +322,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     }
 
                 } else {
-
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_LONG).show();
                 }
                 return;
             }
@@ -310,7 +333,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             // permissions this app might request
         }
     }
-
 
     private void addNotification() {
         NotificationManager mNotificationManager =
@@ -337,6 +359,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(0, builder.build());
 
-
     }
+
+    // Activates GeocoderIntentService
+    protected void startIntentService() {
+        Intent intent = new Intent(this, GeocoderIntentService.class);
+        intent.putExtra("receiver", geocoderReceiver);
+        intent.putExtra("location", mLastLocation);
+        startService(intent);
+    }
+
+    // This class receives result from GeocoderIntentService
+    public class GeocoderReceiver extends ResultReceiver {
+        public GeocoderReceiver(Handler handler) {
+            super(handler);
+        }
+        @Override
+        protected void onReceiveResult(int resultCode, Bundle resultData) {
+            locality = resultData.getString("result");
+        }
+    }
+
 }

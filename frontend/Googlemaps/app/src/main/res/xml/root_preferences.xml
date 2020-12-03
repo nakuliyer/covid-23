@@ -1,0 +1,18 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/messages_header">
+
+        <Preference
+            app:title="COVID RED FLAG - PRESS IF YOU HAVE COVID"
+            app:key="alarmButton" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory>
+
+        <Preference
+            app:title="Logout"
+            app:key="logoutButton" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

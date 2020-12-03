@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.googlemaps">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -12,7 +11,6 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:name="com.chaquo.python.android.PyApplication"
         android:allowBackup="true"
@@ -21,7 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.googlemaps.LoginActivity" />
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -38,34 +42,38 @@
             android:resource="@array/preloaded_fonts" />
 
         <service
-            android:name="MyNavigationService"
-            android:foregroundServiceType="location" >
-        </service>
+            android:name=".MyNavigationService"
+            android:foregroundServiceType="location"></service>
+        <service
+            android:name=".GeocoderIntentService"
+            android:exported="false" />
 
         <activity
             android:name="MapsActivity"
             android:label="@string/title_activity_maps">
-
-
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="Login">
-        </activity>
-        <activity
-            android:name=".PredictionActivity"
-            android:label="Prediction">
-        </activity>
-        <activity
-            android:name="AuthActivity"
-            android:label="Sign Up">
+            android:label="Login"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="AuthActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".PredictionActivity"
+            android:label="Prediction">
+        </activity>
     </application>
 
 </manifest>

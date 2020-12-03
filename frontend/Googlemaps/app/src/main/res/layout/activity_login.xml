@@ -19,10 +19,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:drawableLeft="@drawable/ic_email"
+        android:drawablePadding="15dp"
         android:fontFamily="@font/muli_light"
-        android:textColor="@android:color/black"
         android:hint="@string/enter_email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/login_password"
@@ -30,10 +31,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="225dp"
         android:drawableLeft="@drawable/ic_pass"
+        android:drawablePadding="15dp"
         android:fontFamily="@font/muli_light"
-        android:textColor="@android:color/black"
         android:hint="@string/enter_password"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:textColor="@android:color/black" />
 
 
     <Button
