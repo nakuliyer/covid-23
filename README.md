@@ -1,4 +1,4 @@
-<img src="frontend/Googlemaps/app/src/main/res/drawable/new_logo.png" width="200" />
+<p align="center"><img src="frontend/Googlemaps/app/src/main/res/drawable/new_logo.png" width="400" /></p>
 
 # group-23
 Groupwork for CS196 group 23
