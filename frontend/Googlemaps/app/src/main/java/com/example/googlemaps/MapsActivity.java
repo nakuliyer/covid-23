@@ -378,6 +378,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
     }
 
+    public void onGoToContactTracing(MenuItem mi) {
+        startActivity(new Intent(getApplicationContext(), ContactTracingActivity.class));
+    }
+
     /**
      * Appends the right side icons to the menu.
      *

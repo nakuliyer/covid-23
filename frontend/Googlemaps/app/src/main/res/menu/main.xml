@@ -5,6 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MapsActivity">
 
+    <!-- Contact Tracing Icon -->
+    <item
+        android:id="@+id/action_contact_tracing"
+        android:icon="@drawable/ic_baseline_people_alt_24"
+        android:onClick="onGoToContactTracing"
+        android:title=""
+        app:showAsAction="always" />
+
     <!-- Settings Icon -->
     <item
         android:id="@+id/action_settings"

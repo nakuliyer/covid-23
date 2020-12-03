@@ -75,6 +75,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.googlemaps.LoginActivity" />
         </activity>
+
+        <activity
+            android:name=".ContactTracingActivity"
+            android:label="ContactTracingActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.googlemaps.LoginActivity" />
+        </activity>
+
     </application>
 
 </manifest>
