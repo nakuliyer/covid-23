@@ -11,22 +11,34 @@ Notes:
 * Consistent with [https://covid-23.herokuapp.com/](https://covid-23.herokuapp.com/).
     * Use `git push heroku master` to update heroku!
 
-## Get news
+## News
 ### Request
 `GET /news/`
-
 ### Response
-```json
-{
-    "result": {
-    "date": "2020-12-03",
-    "locations": {}
-    },
-    "use_cached": false
-}
+* `result.date` is the current date
+* `result.locations` is a dictionary of locations with keys of the form `US-<2 letter state code>`, as in `US-MA`
+* `use_cached` is `true` if we used the cache on heroku (this should only happen once per day globally)
+
+## Contact Tracing
+### Request
+`GET /get_new_code/`
+### Response
+`XP0SLBENH79ORLQOZXYUJFVE`, a string that can be stored locally
+<hr/>
+
+### Request
+`POST /check_compromised/`
+Body:
+```angular2
+{ "codes": ["all", "my", "codes", "in", "the", "past", "few", "days"] }
 ```
+### Response
+* `result` is `true` if we've been near someone with covid, `false` otherwise
 
+### Request
+`POST /post_location/`
 
+# Backend CLI
 ```
 > python backend/champaign/scrapers.py
 > python backend/nation_state/nation_state_data_plotter.py

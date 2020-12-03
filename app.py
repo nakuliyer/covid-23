@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from backend.news.news import get_news
 from backend.contact_tracing.secret_handler import SecretHandler
 from backend.contact_tracing.contact_tracing import ContactTracing
@@ -26,25 +26,25 @@ def get_new_code():
     return m.get_new()
 
 
-@app.route("/check_compromised")
-def check_compromised(codes):
+@app.route("/check_compromised", methods=["POST"])
+def check_compromised():
     """ checks if person was in contact with an infected person """
     m = ContactTracing()
-    return m.check_compromised(codes)
+    return m.check_compromised(request.json["codes"])
 
 
 @app.route("/post_location", methods=["POST"])
-def post_location(code, lat, lon, tim):
+def post_location():
     """ sends phone's location,current time, and present code to db  """
     m = Locations()
-    m.report_location(code, lat, lon, tim)
+    m.report_location(request.json["code"], request.json["lat"], request.json["long"], request.json["time"])
 
 
 @app.route("/post_compromised_codes", methods=["POST"])
-def post_compromised_code(codes):
+def post_compromised_code():
     """ sends infected persons codes to the db """
     m = SecretHandler()
-    m.mark_compromised(codes)
+    m.mark_compromised(request.json["codes"])
 
 
 @app.route("/create_contacts", methods=["POST"])

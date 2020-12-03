@@ -7,6 +7,7 @@ if __name__ == "__main__":
     sys.path.append(ROOT)
 from backend.contact_tracing.utils import convert_lat_long_to_m, sqlize_list
 from backend.utils.sql import SQLQueryMaker
+
 DB_LOCATION = os.path.join(ROOT, "backend/contact_tracing/ct.sqlite")
 
 
@@ -50,6 +51,8 @@ class ContactTracing:
         other_codes = []
         for (first_secret, second_secret, timestamp, distance) in interactions:
             other_codes.append(first_secret if second_secret in sql_my_codes else second_secret)  # the other person
+        if len(other_codes) == 0:
+            return {"result": False}
         sql_other_codes = ' or '.join(map(lambda x: "code==\"{}\"".format(x), other_codes))
-        return self.sql.exists(""" SELECT COUNT(*) FROM compromised_codes WHERE ({})""".format(sql_other_codes))
-
+        result = self.sql.exists(""" SELECT COUNT(*) FROM compromised_codes WHERE ({})""".format(sql_other_codes))
+        return {"result": result}

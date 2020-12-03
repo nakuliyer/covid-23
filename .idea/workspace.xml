@@ -4,6 +4,9 @@
     <list default="true" id="435e6300-1c1d-4b1f-bec8-71dfcf21dd74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/contact_tracing/contact_tracing.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/contact_tracing/contact_tracing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/contact_tracing/ct.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/backend/contact_tracing/ct.sqlite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +29,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -41,7 +50,7 @@
       <updated>1606872367359</updated>
       <workItem from="1606872375053" duration="351000" />
       <workItem from="1606872734693" duration="521000" />
-      <workItem from="1606976378771" duration="1099000" />
+      <workItem from="1606976378771" duration="2441000" />
     </task>
     <servers />
   </component>
