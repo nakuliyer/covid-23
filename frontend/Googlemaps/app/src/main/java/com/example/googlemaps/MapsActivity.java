@@ -8,6 +8,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -38,7 +39,6 @@ import com.android.volley.toolbox.Volley;
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -81,6 +81,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     String coordinates;
 
+    private BackgroundLocationUpdateService backgroundService;
+    private Intent backgroundIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +93,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         getSupportActionBar().setLogo(R.drawable.ic_baseline_map_24);
         getSupportActionBar().setTitle("  Map");
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+        startService(new Intent(this, BackgroundLocationUpdateService.class));
 
         btGeocoder = findViewById(R.id.btGeocoder);
 
