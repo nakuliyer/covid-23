@@ -36,7 +36,7 @@ class SplunkScraper:
 
     def load_up_cookies(self):
         r = self.session_.get(self.COOKIES_URL)
-        r.html.render()
+        r.html.arender()
 
         html = requests.get("https://go.illinois.edu/COVIDTestingData", allow_redirects=True)
 
