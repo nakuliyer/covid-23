@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="435e6300-1c1d-4b1f-bec8-71dfcf21dd74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/contact_tracing/ct.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/backend/contact_tracing/ct.sqlite" afterDir="false" />
     </list>
@@ -49,7 +48,7 @@
       <updated>1606872367359</updated>
       <workItem from="1606872375053" duration="351000" />
       <workItem from="1606872734693" duration="521000" />
-      <workItem from="1606976378771" duration="2996000" />
+      <workItem from="1606976378771" duration="3757000" />
     </task>
     <servers />
   </component>

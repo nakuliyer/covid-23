@@ -60,7 +60,7 @@ def create_contacts(max_distance=7, max_time=10000):
     return {"success": True}
 
 
-@app.route("/route_delete_all", methods=["DELETE"])
+@app.route("/routine_delete_all", methods=["DELETE"])
 def routine_delete_all(max_period=1.21e+9):
     m = ContactTracing()
     m.routine_delete(max_period)
