@@ -6,7 +6,27 @@
 A COVID-19 map which displays data on where most of the cases are concentrated by superimposing cases on google maps or through a purely diagrammatic representation of the cases.   While there may be other applications/ services that provide covid-19 trackers, our app stands out in the aspect that we aim to provide data accurate for the locality that the person uses the tracker in. In particular, it is most important to get this app working for the Urbana-Champaign area.
 
 
-## Backend API Overview
+# Backend API Overview
+Notes:
+* Consistent with [https://covid-23.herokuapp.com/](https://covid-23.herokuapp.com/).
+    * Use `git push heroku master` to update heroku!
+
+## Get news
+### Request
+`GET /news/`
+
+### Response
+```json
+{
+    "result": {
+    "date": "2020-12-03",
+    "locations": {}
+    },
+    "use_cached": false
+}
+```
+
+
 ```
 > python backend/champaign/scrapers.py
 > python backend/nation_state/nation_state_data_plotter.py

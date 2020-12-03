@@ -27,6 +27,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -40,11 +41,17 @@
       <updated>1606872367359</updated>
       <workItem from="1606872375053" duration="351000" />
       <workItem from="1606872734693" duration="521000" />
-      <workItem from="1606976378771" duration="542000" />
+      <workItem from="1606976378771" duration="1099000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="229" y="86" key="SettingsEditor" timestamp="1606977349970">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="229" y="86" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1606977349970" />
   </component>
 </project>
