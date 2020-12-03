@@ -1,4 +1,4 @@
-![Alt text](frontend/Googlemaps/app/src/main/res/drawable/new_logo.png)
+<img src="frontend/Googlemaps/app/src/main/res/drawable/new_logo.png" width="200" />
 
 # group-23
 Groupwork for CS196 group 23
