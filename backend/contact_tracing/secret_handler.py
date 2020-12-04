@@ -37,7 +37,7 @@ class SecretHandler:
     def am_i_compromised(self, my_codes):
         sql_my_codes = sqlize_list(my_codes)
         result = self.sql.exists(""" SELECT COUNT(*) FROM compromised_codes WHERE (code in {})""".format(sql_my_codes))
-        return {"result": result}
+        return result
 
     def mark_not_compromised(self, codes):
         sql_my_codes = sqlize_list(codes)

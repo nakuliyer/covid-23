@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="435e6300-1c1d-4b1f-bec8-71dfcf21dd74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/backend/contact_tracing/secret_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/contact_tracing/secret_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/java/com/example/googlemaps/ContactTracingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/java/com/example/googlemaps/ContactTracingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/res/layout/activity_contact_tracing.xml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/res/layout/activity_contact_tracing.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

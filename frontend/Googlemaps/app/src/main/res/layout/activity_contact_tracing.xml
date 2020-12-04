@@ -35,6 +35,18 @@
           android:text="Likelihood of Infection:"
           android:textSize="18dp" />
         <TextView
+          android:id="@+id/ct_you_are_infected"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="430dp"
+          android:layout_marginStart="30dp"
+          android:layout_marginEnd="30dp"
+          android:layout_marginLeft="30dp"
+          android:layout_marginRight="30dp"
+          android:text="You are infected. Anyone who you have been near in the past 14 days will have a raised likelihood of infection."
+          android:textSize="18dp"
+          android:visibility="gone" />
+        <TextView
           android:id="@+id/ct_location_status"
           android:textStyle="bold"
           android:layout_width="match_parent"
@@ -121,7 +133,7 @@
           android:id="@+id/ct_covid_btn"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="480dp"
+          android:layout_marginTop="520dp"
           android:layout_marginStart="30dp"
           android:layout_marginEnd="30dp"
           android:layout_marginLeft="30dp"
@@ -130,6 +142,20 @@
           android:fontFamily="@font/muli_black"
           android:text="Report Self Infection"
           android:textColor="@android:color/white" />
+        <Button
+          android:id="@+id/ct_recovered_btn"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="520dp"
+          android:layout_marginStart="30dp"
+          android:layout_marginEnd="30dp"
+          android:layout_marginLeft="30dp"
+          android:layout_marginRight="30dp"
+          android:background="#C4C6FFC4"
+          android:fontFamily="@font/muli_black"
+          android:text="Report Recovery"
+          android:textColor="@android:color/white"
+          android:visibility="gone" />
     </FrameLayout>
 
 </LinearLayout>
