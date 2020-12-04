@@ -151,7 +151,7 @@
           android:layout_marginEnd="30dp"
           android:layout_marginLeft="30dp"
           android:layout_marginRight="30dp"
-          android:background="#C4C6FFC4"
+          android:background="#80CBC4"
           android:fontFamily="@font/muli_black"
           android:text="Report Recovery"
           android:textColor="@android:color/white"
