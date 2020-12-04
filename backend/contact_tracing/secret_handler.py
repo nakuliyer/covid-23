@@ -41,4 +41,4 @@ class SecretHandler:
 
     def mark_not_compromised(self, codes):
         sql_my_codes = sqlize_list(codes)
-        self.sql.execute(""" DELETE FORM compromised_codes WHERE (code in {}) """.format(sql_my_codes))
+        self.sql.execute(""" DELETE FROM compromised_codes WHERE (code in {}) """.format(sql_my_codes))

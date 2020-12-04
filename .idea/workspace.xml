@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="435e6300-1c1d-4b1f-bec8-71dfcf21dd74" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/contact_tracing/contact_tracing.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/contact_tracing/contact_tracing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/contact_tracing/secret_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/contact_tracing/secret_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/java/com/example/googlemaps/BackgroundLocationUpdateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/java/com/example/googlemaps/BackgroundLocationUpdateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/java/com/example/googlemaps/ContactTracingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/java/com/example/googlemaps/ContactTracingActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
