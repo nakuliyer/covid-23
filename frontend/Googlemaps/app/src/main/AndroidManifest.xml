@@ -36,10 +36,6 @@
             android:resource="@array/preloaded_fonts" />
 
         <service
-            android:name=".MyNavigationService"
-            android:foregroundServiceType="location" />
-
-        <service
             android:name=".GeocoderIntentService"
             android:exported="false" />
 
@@ -84,12 +80,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.googlemaps.LoginActivity" />
         </activity>
-
-        <service
-            android:name=".BackgroundLocationUpdateService"
-            android:enabled="true"
-            android:process=":background_service" />
-
     </application>
 
 </manifest>
