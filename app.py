@@ -52,6 +52,20 @@ def post_compromised_code():
     return {"success": True}
 
 
+@app.route("/am_i_compromised", methods=["POST"])
+def post_am_i_compromised():
+    m = SecretHandler()
+    return {"result": m.am_i_compromised(request.json["codes"])}
+
+
+@app.route("/mark_recovered", methods=["POST"])
+def post_mark_recovered():
+    """ sends infected persons codes to the db """
+    m = SecretHandler()
+    m.mark_not_compromised(request.json["codes"])
+    return {"success": True}
+
+
 @app.route("/create_contacts", methods=["POST"])
 def create_contacts(max_distance=7, max_time=10000):
     """ goes through locations, creates contacts, and deletes locations table """

@@ -33,3 +33,12 @@ class SecretHandler:
         """ Adds codes to compromised """
         values = sqlize_list(codes)
         self.sql.execute(""" INSERT INTO compromised_codes (code) VALUES {} """.format(values))
+
+    def am_i_compromised(self, my_codes):
+        sql_my_codes = sqlize_list(my_codes)
+        result = self.sql.exists(""" SELECT COUNT(*) FROM compromised_codes WHERE (code in {})""".format(sql_my_codes))
+        return {"result": result}
+
+    def mark_not_compromised(self, codes):
+        sql_my_codes = sqlize_list(codes)
+        self.sql.execute(""" DELETE FORM compromised_codes WHERE (code in {}) """.format(sql_my_codes))
