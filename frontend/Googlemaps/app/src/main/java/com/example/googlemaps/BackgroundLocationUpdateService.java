@@ -10,6 +10,9 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.media.RingtoneManager;
@@ -26,6 +29,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
+import androidx.preference.PreferenceManager;
+import com.android.volley.Request.Method;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.ApiException;
@@ -44,236 +56,304 @@ import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import com.google.gson.Gson;
 import java.util.concurrent.TimeUnit;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Ketan Ramani on 05/11/18.
  */
 
-public class BackgroundLocationUpdateService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class BackgroundLocationUpdateService extends Service implements
+    GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
+    LocationListener {
 
-    /* Declare in manifest
-    <service android:name=".BackgroundLocationUpdateService"/>
-    */
+  final String LOCAL_CODES_KEY = "covid_23_local_codes";
+  final String POST_LOCATION = "https://covid-23.herokuapp.com/post_location";
+  final String NEW_CODE = "https://covid-23.herokuapp.com/get_new_code";
 
-    private final String TAG = "LocationUpdateService";
-    private final String TAG_LOCATION = "TAG_LOCATION";
-    private Context context;
-    private boolean stopService = false;
+  RequestQueue queue;
 
-    /* For Google Fused API */
-    protected GoogleApiClient mGoogleApiClient;
-    protected LocationSettingsRequest mLocationSettingsRequest;
-    private String latitude = "0.0", longitude = "0.0";
-    private FusedLocationProviderClient mFusedLocationClient;
-    private SettingsClient mSettingsClient;
-    private LocationCallback mLocationCallback;
-    private LocationRequest mLocationRequest;
-    private Location mCurrentLocation;
-    /* For Google Fused API */
+  /* Declare in manifest
+  <service android:name=".BackgroundLocationUpdateService"/>
+  */
+  private final String TAG = "CoV23_LOCATION_CT";
+  private Context context;
+  private boolean stopService = false;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        context = this;
-    }
+  /* For Google Fused API */
+  protected GoogleApiClient mGoogleApiClient;
+  protected LocationSettingsRequest mLocationSettingsRequest;
+  private String latitude = "0.0", longitude = "0.0";
+  private FusedLocationProviderClient mFusedLocationClient;
+  private SettingsClient mSettingsClient;
+  private LocationCallback mLocationCallback;
+  private LocationRequest mLocationRequest;
+  private Location mCurrentLocation;
+  /* For Google Fused API */
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        StartForeground();
-        final Handler handler = new Handler();
-        final Runnable runnable = new Runnable() {
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    context = this;
+    queue = Volley.newRequestQueue(this);
+  }
 
-            @Override
-            public void run() {
-                try {
-                    if (!stopService) {
-                        //Perform your task here
-                    }
+  @Override
+  public int onStartCommand(Intent intent, int flags, int startId) {
+    StartForeground();
+    final Handler handler = new Handler();
+    final Runnable runnable = new Runnable() {
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (!stopService) {
-                        handler.postDelayed(this, TimeUnit.SECONDS.toMillis(10));
-                    }
-                }
-            }
-        };
-        handler.postDelayed(runnable, 2000);
+      @Override
+      public void run() {
+        try {
+          if (!stopService) {
+            //Perform your task here
+          }
 
-        buildGoogleApiClient();
-
-        return START_STICKY;
-    }
-
-    @Override
-    public void onDestroy() {
-        Log.e(TAG, "Service Stopped");
-        stopService = true;
-        if (mFusedLocationClient != null) {
-            mFusedLocationClient.removeLocationUpdates(mLocationCallback);
-            Log.e(TAG_LOCATION, "Location Update Callback Removed");
+        } catch (Exception e) {
+          e.printStackTrace();
+        } finally {
+          if (!stopService) {
+            handler.postDelayed(this, TimeUnit.SECONDS.toMillis(10));
+          }
         }
-        super.onDestroy();
+      }
+    };
+    handler.postDelayed(runnable, 2000);
+
+    buildGoogleApiClient();
+
+    return START_STICKY;
+  }
+
+  @Override
+  public void onDestroy() {
+    Log.e(TAG, "Service Stopped");
+    stopService = true;
+    if (mFusedLocationClient != null) {
+      mFusedLocationClient.removeLocationUpdates(mLocationCallback);
+      Log.e(TAG, "Location Update Callback Removed");
     }
+    super.onDestroy();
+  }
 
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
+  @Nullable
+  @Override
+  public IBinder onBind(Intent intent) {
+    return null;
+  }
 
-    private void StartForeground() {
-        Intent intent = new Intent(context, MapsActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent, PendingIntent.FLAG_ONE_SHOT);
+  private void StartForeground() {
 
-        String CHANNEL_ID = "channel_location";
-        String CHANNEL_NAME = "channel_location";
+  }
 
-        NotificationCompat.Builder builder = null;
-        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
-            channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-            notificationManager.createNotificationChannel(channel);
-            builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
-            builder.setChannelId(CHANNEL_ID);
-            builder.setBadgeIconType(NotificationCompat.BADGE_ICON_NONE);
-        } else {
-            builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
-        }
+  Location location;
 
-        builder.setContentTitle("Your title");
-        builder.setContentText("You are now online");
-        Uri notificationSound = RingtoneManager.getActualDefaultRingtoneUri(this, RingtoneManager.TYPE_NOTIFICATION);
-        builder.setSound(notificationSound);
-        builder.setAutoCancel(true);
-        builder.setSmallIcon(R.drawable.ic_baseline_map_24);
-        builder.setContentIntent(pendingIntent);
-        Notification notification = builder.build();
-        startForeground(101, notification);
-    }
+  @Override
+  public void onLocationChanged(Location location) {
+    Log.i(TAG, "Location Changed Latitude : " + location.getLatitude() + "\tLongitude : " + location
+        .getLongitude());
 
-    @Override
-    public void onLocationChanged(Location location) {
-        Log.e(TAG_LOCATION, "Location Changed Latitude : " + location.getLatitude() + "\tLongitude : " + location.getLongitude());
+    latitude = String.valueOf(location.getLatitude());
+    longitude = String.valueOf(location.getLongitude());
+    this.location = location;
 
-        latitude = String.valueOf(location.getLatitude());
-        longitude = String.valueOf(location.getLongitude());
-
-        if (latitude.equalsIgnoreCase("0.0") && longitude.equalsIgnoreCase("0.0")) {
-            requestLocationUpdate();
-        } else {
-            Log.e(TAG_LOCATION, "Latitude : " + location.getLatitude() + "\tLongitude : " + location.getLongitude());
-        }
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
-
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(10 * 1000);
-        mLocationRequest.setFastestInterval(5 * 1000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
-        builder.addLocationRequest(mLocationRequest);
-        builder.setAlwaysShow(true);
-        mLocationSettingsRequest = builder.build();
-
-        mSettingsClient
-                .checkLocationSettings(mLocationSettingsRequest)
-                .addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
-                    @Override
-                    public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-                        Log.e(TAG_LOCATION, "GPS Success");
-                        requestLocationUpdate();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                int statusCode = ((ApiException) e).getStatusCode();
-                switch (statusCode) {
-                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
-                        try {
-                            int REQUEST_CHECK_SETTINGS = 214;
-                            ResolvableApiException rae = (ResolvableApiException) e;
-                            rae.startResolutionForResult((AppCompatActivity) context, REQUEST_CHECK_SETTINGS);
-                        } catch (IntentSender.SendIntentException sie) {
-                            Log.e(TAG_LOCATION, "Unable to execute request.");
-                        }
-                        break;
-                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                        Log.e(TAG_LOCATION, "Location settings are inadequate, and cannot be fixed here. Fix in Settings.");
-                }
-            }
-        }).addOnCanceledListener(new OnCanceledListener() {
-            @Override
-            public void onCanceled() {
-                Log.e(TAG_LOCATION, "checkLocationSettings -> onCanceled");
-            }
+    if (latitude.equalsIgnoreCase("0.0") && longitude.equalsIgnoreCase("0.0")) {
+      requestLocationUpdate();
+    } else {
+      String[] codes = getLocalCodes();
+      Log.d(TAG, "found codes: " + (new Gson()).toJson(codes));
+      if (codes.length == 0) {
+        StringRequest stringRequest = new StringRequest(Method.GET, NEW_CODE,
+            new Listener<String>() {
+              @Override
+              public void onResponse(String response) {
+                Log.d(TAG, "received message: " + response);
+                addLocalCode(response);
+                reportLocation();
+              }
+            }, new ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            Log.e(TAG, "failed to get a new code");
+          }
         });
+        queue.add(stringRequest);
+      } else {
+        reportLocation();
+      }
     }
+  }
 
-    @Override
-    public void onConnectionSuspended(int i) {
-        connectGoogleClient();
-    }
+  @Override
+  public void onStatusChanged(String provider, int status, Bundle extras) {
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        buildGoogleApiClient();
-    }
+  }
 
-    protected synchronized void buildGoogleApiClient() {
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
-        mSettingsClient = LocationServices.getSettingsClient(context);
+  @Override
+  public void onProviderEnabled(String provider) {
 
-        mGoogleApiClient = new GoogleApiClient.Builder(context)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
+  }
 
-        connectGoogleClient();
+  @Override
+  public void onProviderDisabled(String provider) {
 
-        mLocationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-                super.onLocationResult(locationResult);
-                Log.e(TAG_LOCATION, "Location Received");
-                mCurrentLocation = locationResult.getLastLocation();
-                onLocationChanged(mCurrentLocation);
+  }
+
+  @Override
+  public void onConnected(@Nullable Bundle bundle) {
+    mLocationRequest = new LocationRequest();
+    mLocationRequest.setInterval(10 * 1000);
+    mLocationRequest.setFastestInterval(5 * 1000);
+    mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+    LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
+    builder.addLocationRequest(mLocationRequest);
+    builder.setAlwaysShow(true);
+    mLocationSettingsRequest = builder.build();
+
+    mSettingsClient
+        .checkLocationSettings(mLocationSettingsRequest)
+        .addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
+          @Override
+          public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+            Log.e(TAG, "GPS Success");
+            requestLocationUpdate();
+          }
+        }).addOnFailureListener(new OnFailureListener() {
+      @Override
+      public void onFailure(@NonNull Exception e) {
+        int statusCode = ((ApiException) e).getStatusCode();
+        switch (statusCode) {
+          case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+            try {
+              int REQUEST_CHECK_SETTINGS = 214;
+              ResolvableApiException rae = (ResolvableApiException) e;
+              rae.startResolutionForResult((AppCompatActivity) context, REQUEST_CHECK_SETTINGS);
+            } catch (IntentSender.SendIntentException sie) {
+              Log.e(TAG, "Unable to execute request.");
             }
-        };
-    }
-
-    private void connectGoogleClient() {
-        GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
-        int resultCode = googleAPI.isGooglePlayServicesAvailable(context);
-        if (resultCode == ConnectionResult.SUCCESS) {
-            mGoogleApiClient.connect();
+            break;
+          case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+            Log.e(TAG,
+                "Location settings are inadequate, and cannot be fixed here. Fix in Settings.");
         }
+      }
+    }).addOnCanceledListener(new OnCanceledListener() {
+      @Override
+      public void onCanceled() {
+        Log.e(TAG, "checkLocationSettings -> onCanceled");
+      }
+    });
+  }
+
+  @Override
+  public void onConnectionSuspended(int i) {
+    connectGoogleClient();
+  }
+
+  @Override
+  public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+    buildGoogleApiClient();
+  }
+
+  protected synchronized void buildGoogleApiClient() {
+    mFusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
+    mSettingsClient = LocationServices.getSettingsClient(context);
+
+    mGoogleApiClient = new GoogleApiClient.Builder(context)
+        .addConnectionCallbacks(this)
+        .addOnConnectionFailedListener(this)
+        .addApi(LocationServices.API)
+        .build();
+
+    connectGoogleClient();
+
+    mLocationCallback = new LocationCallback() {
+      @Override
+      public void onLocationResult(LocationResult locationResult) {
+        super.onLocationResult(locationResult);
+        Log.i(TAG, "Location Received");
+        mCurrentLocation = locationResult.getLastLocation();
+        onLocationChanged(mCurrentLocation);
+      }
+    };
+  }
+
+  private void connectGoogleClient() {
+    GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
+    int resultCode = googleAPI.isGooglePlayServicesAvailable(context);
+    if (resultCode == ConnectionResult.SUCCESS) {
+      mGoogleApiClient.connect();
+    }
+  }
+
+  @SuppressLint("MissingPermission")
+  private void requestLocationUpdate() {
+    mFusedLocationClient
+        .requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
+  }
+
+  private void reportLocation() {
+    String[] codes = getLocalCodes();
+    if (codes.length == 0) {
+      Log.e(TAG, "expected codes");
+      return;
+    }
+    final JSONObject jsonBody = new JSONObject();
+    JSONArray jsonCodes = new JSONArray();
+    for (String code : codes) {
+      jsonCodes.put(code);
+    }
+    try {
+      jsonBody.put("code", jsonCodes);
+      jsonBody.put("lat", location.getLatitude());
+      jsonBody.put("long", location.getLongitude());
+    } catch (JSONException e) {
+      Log.e(TAG, "some whack error");
     }
 
-    @SuppressLint("MissingPermission")
-    private void requestLocationUpdate() {
-        mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(POST_LOCATION, jsonBody,
+        new Listener<JSONObject>() {
+          @Override
+          public void onResponse(JSONObject response) {
+            Log.d(TAG, "posted location" + jsonBody + " with response " + response);
+          }
+        }, new ErrorListener() {
+      @Override
+      public void onErrorResponse(VolleyError error) {
+        Log.e(TAG, "some other whack error");
+      }
+    });
+    queue.add(jsonObjectRequest);
+  }
+
+  private String[] getLocalCodes() {
+    SharedPreferences sharedPrefs = PreferenceManager
+        .getDefaultSharedPreferences(getApplicationContext());
+    Gson gson = new Gson();
+    String json = sharedPrefs.getString(LOCAL_CODES_KEY, "[]");
+    return gson.fromJson(json, String[].class);
+  }
+
+  public void addLocalCode(String code) {
+    String[] codes = getLocalCodes();
+    String[] newCodes = new String[codes.length + 1];
+    for (int i = 0; i < codes.length; ++i) {
+      newCodes[i] = codes[i]; // copying over
     }
+    newCodes[codes.length] = code;
+
+    SharedPreferences sharedPrefs = PreferenceManager
+        .getDefaultSharedPreferences(getApplicationContext());
+    Editor editor = sharedPrefs.edit();
+    Gson gson = new Gson();
+    String json = gson.toJson(newCodes);
+    editor.putString(LOCAL_CODES_KEY, json);
+    editor.commit();
+  }
 }

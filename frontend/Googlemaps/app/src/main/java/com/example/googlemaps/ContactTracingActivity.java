@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -20,26 +22,47 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceManager;
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Request.Method;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ContactTracingActivity extends AppCompatActivity {
 
+  final String TAG = "CoV23_CT";
   final String LOCAL_CODES_KEY = "covid_23_local_codes";
   final String COMPROMISED_URL = "https://covid-23.herokuapp.com/check_compromised";
   final String NEW_CODE = "https://covid-23.herokuapp.com/get_new_code";
+  final String I_HAVE_COVID_CODE = "https://covid-23.herokuapp.com/post_compromised_codes";
 
   Button covidBtn;
   TextView locationEnabled;
   TextView infentionLikelihood;
+  RequestQueue queue;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +72,8 @@ public class ContactTracingActivity extends AppCompatActivity {
     covidBtn = findViewById(R.id.ct_covid_btn);
     locationEnabled = findViewById(R.id.ct_location_status);
     infentionLikelihood = findViewById(R.id.ct_compromised_status);
+
+    queue = Volley.newRequestQueue(this);
 
     covidBtn.setOnClickListener(new OnClickListener() {
       @Override
@@ -64,8 +89,14 @@ public class ContactTracingActivity extends AppCompatActivity {
       actionBar.setTitle("Contact Tracing");
     }
 
-    boolean isCompromised = isCompromisedAPI();
-    locationEnabled.setText("" + isCompromised);
+    isCompromisedAPI();
+    if (getLocalCodes().length == 0) {
+      infentionLikelihood.setText("Disabled");
+      infentionLikelihood.setTextColor(Color.parseColor("#E91E63"));
+    } else {
+      infentionLikelihood.setText("Enabled");
+      infentionLikelihood.setTextColor(Color.parseColor("#4CAF50"));
+    }
   }
 
   // Going back to the MapsActivity
@@ -91,7 +122,10 @@ public class ContactTracingActivity extends AppCompatActivity {
       builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-          // Implement api stuff here
+          ContactTracingActivity activity = (ContactTracingActivity) getActivity();
+          if (activity != null) {
+            activity.postCovidAPI();
+          }
         }
       });
       builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -106,63 +140,105 @@ public class ContactTracingActivity extends AppCompatActivity {
 
   private boolean isCompromisedAPI() {
     String[] codes = getLocalCodes();
+    Log.d(TAG, "found codes: " + (new Gson()).toJson(codes));
     if (codes.length == 0) {
-      codes = new String[1];
-      codes[0] = getNextCodeAPI();
+      StringRequest stringRequest = new StringRequest(Method.GET, NEW_CODE, new Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+          Log.d(TAG, "received message: " + response);
+          addLocalCode(response);
+          postIsCompromisedAPI();
+        }
+      }, new ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+          Log.e(TAG, "failed to get a new code");
+        }
+      });
+      queue.add(stringRequest);
+    } else {
+      postIsCompromisedAPI();
     }
-    Log.d("COVID-23", codes[0]);
-//    try {
-//      URL url = new URL(COMPROMISED_URL);
-//      HttpURLConnection conx = (HttpURLConnection) url.openConnection();
-//      conx.setRequestMethod("POST");
-//      conx.setRequestProperty("Content-Type", "application/json; utf-8");
-//      conx.setRequestProperty("Accept", "application/json");
-//      Gson gson = new Gson();
-//      String jsonInput = "{\"codes\": gson.toJson(codes)}";
-//      OutputStream os = conx.getOutputStream();
-//      byte[] input = jsonInput.getBytes("utf-8");
-//      os.write(input, 0, input.length);
-//
-//      if (conx.getResponseCode() == HttpURLConnection.HTTP_OK) {
-//        BufferedReader in = new BufferedReader(new InputStreamReader(conx.getInputStream()));
-//        String inputLine;
-//        StringBuilder response = new StringBuilder();
-//        while ((inputLine = in.readLine()) != null) {
-//          response.append(inputLine);
-//        }
-//        in.close();
-//        HashMap<String, Boolean> result = gson.fromJson(response.toString(), HashMap.class);
-//        return result.get("result");
-//      } else {
-//        Log.e("COVID-23", "failed");
-//      }
-//    } catch (IOException e) {
-//      // pass
-//    }
     return false;
   }
 
-  private String getNextCodeAPI() {
-    try {
-      URL url = new URL(NEW_CODE);
-      HttpURLConnection conx = (HttpURLConnection) url.openConnection();
-      conx.setRequestMethod("GET");
-      if (conx.getResponseCode() == HttpURLConnection.HTTP_OK) {
-        BufferedReader in = new BufferedReader(new InputStreamReader(conx.getInputStream()));
-        String inputLine;
-        StringBuilder response = new StringBuilder();
-        while ((inputLine = in.readLine()) != null) {
-          response.append(inputLine);
-        }
-        in.close();
-        return response.toString();
-      } else {
-        Log.e("COVID-23", "failed");
-      }
-    } catch (IOException e) {
-      // pass
+  private void postIsCompromisedAPI() {
+    String[] codes = getLocalCodes();
+    if (codes.length == 0) {
+      Log.e(TAG, "expected codes");
+      return;
     }
-    return "0000000";
+    Log.d(TAG, "posting with codes: " + (new Gson()).toJson(codes));
+    JSONObject jsonBody = new JSONObject();
+    JSONArray jsonCodes = new JSONArray();
+    for (String code : codes) {
+      jsonCodes.put(code);
+    }
+    try {
+      jsonBody.put("codes", jsonCodes);
+    } catch (JSONException e) {
+      Log.e(TAG, "some whack error");
+    }
+
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(COMPROMISED_URL, jsonBody,
+        new Listener<JSONObject>() {
+          @Override
+          public void onResponse(JSONObject response) {
+            Log.d(TAG, "covid response thingy: " + response);
+            boolean b = false;
+            try {
+              b = response.getBoolean("result");
+            } catch (JSONException e) {
+              Log.e(TAG, "no boolean at response.result; see above");
+            }
+            if (b) {
+              infentionLikelihood.setText("High");
+              infentionLikelihood.setTextColor(Color.parseColor("#E91E63"));
+            } else {
+              infentionLikelihood.setText("Low");
+              infentionLikelihood.setTextColor(Color.parseColor("#4CAF50"));
+            }
+          }
+        }, new ErrorListener() {
+      @Override
+      public void onErrorResponse(VolleyError error) {
+        Log.e(TAG, "some other whack error");
+      }
+    });
+    queue.add(jsonObjectRequest);
+  }
+
+  private void postCovidAPI() {
+    String[] codes = getLocalCodes();
+    if (codes.length == 0) {
+      Log.e(TAG, "expected codes");
+      return;
+    }
+    Log.d(TAG, "posting i have covid with codes: " + (new Gson()).toJson(codes));
+    JSONObject jsonBody = new JSONObject();
+    JSONArray jsonCodes = new JSONArray();
+    for (String code : codes) {
+      jsonCodes.put(code);
+    }
+    try {
+      jsonBody.put("codes", jsonCodes);
+    } catch (JSONException e) {
+      Log.e(TAG, "some whack error");
+    }
+
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(I_HAVE_COVID_CODE, jsonBody,
+        new Listener<JSONObject>() {
+          @Override
+          public void onResponse(JSONObject response) {
+            Log.d(TAG, "i have covid response thingy: " + response);
+          }
+        }, new ErrorListener() {
+      @Override
+      public void onErrorResponse(VolleyError error) {
+        Log.e(TAG, "some other whack error");
+      }
+    });
+    queue.add(jsonObjectRequest);
   }
 
   private String[] getLocalCodes() {
