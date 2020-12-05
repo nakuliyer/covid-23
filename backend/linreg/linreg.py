@@ -16,7 +16,10 @@ def main_regression(state):
         day = date[6:]
         date = datetime.datetime(int(year), int(month), int(day)).timetuple().tm_yday
         dates.insert(0, date - 64)
-        cases.insert(0, result.json()[i]['positive'])
+        if result.json()[i]['positive'] is None:
+            cases.insert(0, 0)
+        else:
+            cases.insert(0, result.json()[i]['positive'])
     x = np.array([np.ones(len(dates)), dates])
     x = np.transpose(x)
     y = np.array([cases])
