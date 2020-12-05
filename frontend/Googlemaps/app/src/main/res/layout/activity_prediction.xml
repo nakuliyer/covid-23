@@ -14,5 +14,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="169dp"
         android:fontFamily="@font/muli_light"
-        android:textSize="25sp" />
+        android:textSize="25sp"/>
 </RelativeLayout>

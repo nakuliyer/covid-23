@@ -70,7 +70,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location mLastLocation;
     Marker mCurrLocationMarker;
     FusedLocationProviderClient fusedLocationClient;
-    Button btnLogout;
+    Button btnSetting;
     Button prediction;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener  authStateListener;
@@ -83,7 +83,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        btnLogout = findViewById(R.id.logout);
+        btnSetting = findViewById(R.id.setting);
         btGeocoder = findViewById(R.id.btGeocoder);
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
@@ -115,7 +115,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 //startActivity(new Intent(getApplicationContext(), PredictionActivity.class));
             }
         });
-        btnLogout.setOnClickListener(new View.OnClickListener() {
+        btnSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), SettingsActivity.class));

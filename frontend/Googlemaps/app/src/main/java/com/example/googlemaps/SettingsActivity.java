@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +19,10 @@ import androidx.fragment.app.DialogFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -89,7 +94,34 @@ public class SettingsActivity extends AppCompatActivity {
         }
       });
 
-
+      // Get reset password button from settings
+      Preference resetPass = findPreference("resetPass");
+      resetPass.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        EditText resetPasswordText = new EditText(getContext());
+        @Override
+        public boolean onPreferenceClick(Preference preference) {
+          AlertDialog.Builder resetPassDialog = new AlertDialog.Builder(getContext());
+          resetPassDialog.setTitle("Reset Password?");
+          resetPassDialog.setMessage("Enter new password (min. 6 characters)");
+          resetPassDialog.setView(resetPasswordText);
+          resetPassDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              String newPassword = resetPasswordText.getText().toString();
+              FirebaseUser user = firebaseAuth.getCurrentUser();
+              user.updatePassword(newPassword);
+            }
+          });
+          resetPassDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              // Do nothing
+            }
+          });
+          resetPassDialog.create().show();
+          return true;
+        }
+      });
 
       Preference alarm = findPreference("alarmButton");
       alarm.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
