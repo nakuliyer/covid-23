@@ -5,6 +5,7 @@ from backend.contact_tracing.contact_tracing import ContactTracing
 from backend.contact_tracing.locations import Locations
 from backend.champaign.scrapers import get_latest_data, get_old_data
 from backend.nation_state import get_nation_state_data
+from backend.linreg import main_regression
 
 app = Flask(__name__)
 
@@ -100,6 +101,11 @@ def get_nation():
 @app.route("/illinois")
 def get_illinois():
     return get_nation_state_data(1)
+
+
+@app.route("/regression")
+def get_regression():
+    return {"result": main_regression(request.json["state"])}
 
 
 if __name__ == '__main__':
