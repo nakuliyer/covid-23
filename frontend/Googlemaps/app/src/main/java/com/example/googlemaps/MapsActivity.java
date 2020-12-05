@@ -28,6 +28,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -73,6 +75,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Button prediction;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener  authStateListener;
+    private Spinner spinner;
+    private boolean predictionCalled = false;
 
 //    private LocationCallback mLocationCallback;
     private GeocoderReceiver geocoderReceiver;
@@ -97,6 +101,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         startService(new Intent(this, BackgroundLocationUpdateService.class));
 
         btGeocoder = findViewById(R.id.btGeocoder);
+        spinner = (Spinner)findViewById(R.id.progressBar1);
+
 
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
@@ -118,18 +124,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         prediction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                spinner.bringToFront();
+                spinner.setVisibility(View.VISIBLE);
                 Python py = Python.getInstance();
                 final PyObject pyobj = py.getModule("script");
                 final PyObject obj = pyobj.callAttr("main", coordinates);
                 float[] values = obj.toJava(float[].class);
-                Log.d("Value 1", String.valueOf(values[0]));
-                Log.d("Value 2", String.valueOf(values[1]));
                 Intent intent = new Intent(getApplicationContext(), PredictionActivity.class);
                 intent.putExtra("prediction_values", values);
                 startActivity(intent);
                 //startActivity(new Intent(getApplicationContext(), PredictionActivity.class));
             }
         });
+
+        while(predictionCalled == true) {
+            spinner.setVisibility(ProgressBar.VISIBLE);
+        }
 
         btGeocoder.setOnClickListener(new View.OnClickListener() {
             @Override

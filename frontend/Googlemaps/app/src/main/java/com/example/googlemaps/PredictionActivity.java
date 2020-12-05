@@ -13,7 +13,7 @@ public class PredictionActivity extends AppCompatActivity {
     setContentView(R.layout.activity_prediction);
     prediction_text = (TextView) findViewById(R.id.prediction);
     float[] values = getIntent().getFloatArrayExtra("prediction_values");
-    float prediction = (326 * values[1]) + values[0];
-    prediction_text.setText("Prediction: " + prediction + " cases");
+    float prediction = (303 * values[1]) + values[0];
+    prediction_text.setText((int) prediction + " cases");
   }
 }
