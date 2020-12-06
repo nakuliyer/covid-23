@@ -103,7 +103,7 @@ def get_illinois():
     return get_nation_state_data(1)
 
 
-@app.route("/regression")
+@app.route("/regression", methods=["POST"])
 def get_regression():
     return {"result": main_regression(request.json["state"])}
 
