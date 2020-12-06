@@ -23,7 +23,7 @@
         android:fontFamily="@font/muli_light"
         android:hint="@string/enter_email"
         android:inputType="textEmailAddress"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"/>
 
     <EditText
         android:id="@+id/password"
@@ -35,7 +35,7 @@
         android:fontFamily="@font/muli_light"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"/>
 
     <Button
         android:id="@+id/sign_up"
@@ -45,7 +45,7 @@
         android:background="@android:color/black"
         android:fontFamily="@font/muli_black"
         android:textColor="@android:color/white"
-        android:text="Sign Up" />
+        android:text="Sign Up"/>
 
     <TextView
         android:id="@+id/loginin_redirect"
@@ -56,7 +56,7 @@
         android:fontFamily="@font/muli_light"
         android:textColor="@android:color/darker_gray"
         android:text="Already have an account ?"
-        android:textSize="15sp" />
+        android:textSize="15sp"/>
 
     <Button
         android:id="@+id/loginin_redirect_btn"
@@ -66,7 +66,7 @@
         android:background="@android:color/black"
         android:fontFamily="@font/muli_black"
         android:text="Login"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"/>
 
 
 </RelativeLayout>

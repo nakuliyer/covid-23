@@ -37,6 +37,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
@@ -65,6 +66,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -77,20 +79,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Marker mCurrLocationMarker;
     FusedLocationProviderClient fusedLocationClient;
     Button prediction;
+    Button geocoder;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener  authStateListener;
     private Spinner spinner;
     private boolean predictionCalled = false;
-
-//    private LocationCallback mLocationCallback;
     private GeocoderReceiver geocoderReceiver;
-    private Button btGeocoder;
-    protected String locality;
-
     String coordinates;
-
     private BackgroundLocationUpdateService backgroundService;
     private Intent backgroundIntent;
+    protected String state;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,15 +102,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         startService(new Intent(this, BackgroundLocationUpdateService.class));
 
-        btGeocoder = findViewById(R.id.btGeocoder);
+        geocoder = findViewById(R.id.geocoder);
+        prediction = findViewById(R.id.prediction);
         spinner = (Spinner)findViewById(R.id.progressBar1);
 
 
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
         }
-
-        prediction =(Button) findViewById(R.id.prediction);
 
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -145,14 +142,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             spinner.setVisibility(ProgressBar.VISIBLE);
         }
 
-        btGeocoder.setOnClickListener(new View.OnClickListener() {
+        geocoderReceiver = new GeocoderReceiver(new Handler());
+
+        // If news button is clicked, GeocoderIntentService is activated
+        geocoder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mMap.isMyLocationEnabled()) {
                     startIntentService();
-                    Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
-                    intent.putExtra("State name", locality);
-                    startActivity(intent);
+                    // Uncomment this to send state to NewsActivity
+                    // Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
+                    // intent.putExtra("State", state);
+                    // startActivity(intent);
                 }
             }
         });
@@ -389,7 +390,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
-            locality = resultData.getString("result");
+            state = resultData.getString("result");
+            if (resultCode == 0) {
+                Log.i("GeocoderReceiver", "State: " + state);
+            }
         }
     }
 
@@ -429,10 +433,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         if (i == 1) {
                             double slope = jsonArray.getDouble(i);
                         }
-                        LocalDate sinceMay4th = LocalDate.of(2020, Month.MAY, 4);
-                        LocalDate cur = LocalDate.now();
-                        long daysdiff = ChronoUnit.DAYS.between(dateBefore, dateAfter);
-                        double val = intercept + slope * daysdiff;
+                        // LocalDate sinceMay4th = LocalDate.of(2020, Month.MAY, 4);
+                        // LocalDate cur = LocalDate.now();
+                        // long daysdiff = ChronoUnit.DAYS.between(dateBefore, dateAfter);
+                        // double val = intercept + slope * daysdiff;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

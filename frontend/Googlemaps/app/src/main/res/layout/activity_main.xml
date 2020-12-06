@@ -4,12 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-<!--    <include-->
-<!--        android:id="@+id/include"-->
-<!--        layout="@layout/content_main" />-->
-
+    tools:context=".MapsActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -51,7 +46,7 @@
         app:srcCompat="@drawable/nationwide_" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/imageView9"
         android:layout_width="420dp"
         android:layout_height="150dp"
         android:translationX="-110dp"

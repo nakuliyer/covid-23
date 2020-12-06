@@ -9,10 +9,12 @@
     </PreferenceCategory>
 
     <PreferenceCategory>
-
         <Preference
             app:title="Logout"
             app:key="logoutButton" />
+        <Preference
+            app:title="Reset Password"
+            app:key="resetPass" />
     </PreferenceCategory>
 
 </PreferenceScreen>

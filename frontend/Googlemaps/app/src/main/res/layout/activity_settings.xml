@@ -7,51 +7,25 @@
     android:layout_height="match_parent"
     android:padding="60dp">
 
-    <TextView
-        android:id="@+id/sign_up_redirect"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/change_password"
-        android:fontFamily="@font/muli_light"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="15sp" />
-
-    <EditText
-        android:id="@+id/change_current_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:drawableLeft="@drawable/ic_pass"
-        android:drawablePadding="15dp"
-        android:fontFamily="@font/muli_light"
-        android:hint="@string/current_password"
-        android:inputType="textPassword"
-        android:textColor="@android:color/black" />
-
-    <EditText
-        android:id="@+id/change_new_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:drawableLeft="@drawable/ic_pass"
-        android:drawablePadding="15dp"
-        android:fontFamily="@font/muli_light"
-        android:hint="@string/new_password"
-        android:inputType="textPassword"
-        android:textColor="@android:color/black" />
-
     <Button
         android:id="@+id/log_out"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="160dp"
         android:background="@android:color/black"
         android:textColor="@android:color/white"
         android:fontFamily="@font/muli_black"
-        android:text="@string/log_out" />
+        android:text="Log out" />
 
+    <Button
+        android:id="@+id/reset_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:background="@android:color/black"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/muli_black"
+        android:text="Reset password" />
 
 </RelativeLayout>
 

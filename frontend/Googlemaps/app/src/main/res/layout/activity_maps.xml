@@ -11,33 +11,29 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MapsActivity" />
+        android:layout_height="match_parent"/>
 
     <Button
-        android:layout_width="40mm"
+        android:layout_width="41mm"
         android:layout_height="wrap_content"
-        android:id="@+id/btGeocoder"
-        android:text="See News For This State"
+        android:id="@+id/geocoder"
+        android:text="News For This State"
         android:fontFamily="@font/muli_black"
         android:textColor="@android:color/white"
         android:background="@android:color/black"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
-
+        android:layout_marginTop="20dp"/>
 
     <Button
         android:id="@+id/prediction"
-        android:layout_width="178dp"
+        android:layout_width="41mm"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:text="View Prediction"
+        android:fontFamily="@font/muli_black"
+        android:textColor="@android:color/white"
+        android:background="@android:color/black"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="108dp"
-        android:layout_marginRight="108dp"
-        android:layout_marginBottom="541dp"
-        android:text="View Prediction" />
+        android:layout_marginTop="80dp"/>
 
     <Spinner
         android:id="@+id/progressBar1"
