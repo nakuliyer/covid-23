@@ -24,16 +24,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>
 
-    <Button
-        android:id="@+id/prediction"
+    <TextView
+        android:id="@+id/prediction_text"
         android:layout_width="41mm"
         android:layout_height="wrap_content"
-        android:text="View Prediction"
+        android:text="Loading prediction ..."
         android:fontFamily="@font/muli_black"
         android:textColor="@android:color/white"
         android:background="@android:color/black"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"/>
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"/>
 
     <Spinner
         android:id="@+id/progressBar1"

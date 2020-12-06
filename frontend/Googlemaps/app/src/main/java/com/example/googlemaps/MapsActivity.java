@@ -2,6 +2,7 @@ package com.example.googlemaps;
 
 import android.app.Activity;
 import android.os.Build.VERSION_CODES;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -90,7 +91,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location mLastLocation;
     Marker mCurrLocationMarker;
     FusedLocationProviderClient fusedLocationClient;
-    Button prediction;
     Button geocoder;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -102,6 +102,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Intent backgroundIntent;
     protected String state;
     public RequestQueue requestQueue;
+    private TextView predictionText;
     private static MapsActivity instance;
 
     Map<String, String> states = new HashMap<String, String>();
@@ -119,16 +120,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         startService(new Intent(this, BackgroundLocationUpdateService.class));
 
         geocoder = findViewById(R.id.geocoder);
-        prediction = findViewById(R.id.prediction);
+        predictionText = findViewById(R.id.prediction_text);
         spinner = (Spinner) findViewById(R.id.progressBar1);
 
         requestQueue = Volley.newRequestQueue(this);
         fillStates();
         instance = this;
-
-        if (!Python.isStarted()) {
-            Python.start(new AndroidPlatform(this));
-        }
 
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -141,25 +138,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         };
-        prediction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                spinner.bringToFront();
-                spinner.setVisibility(View.VISIBLE);
-                Python py = Python.getInstance();
-                final PyObject pyobj = py.getModule("script");
-                final PyObject obj = pyobj.callAttr("main", coordinates);
-                float[] values = obj.toJava(float[].class);
-                Intent intent = new Intent(getApplicationContext(), PredictionActivity.class);
-                intent.putExtra("prediction_values", values);
-                startActivity(intent);
-                //startActivity(new Intent(getApplicationContext(), PredictionActivity.class));
-            }
-        });
 
-        while (predictionCalled == true) {
-            spinner.setVisibility(ProgressBar.VISIBLE);
-        }
+//        while (predictionCalled == true) {
+//            spinner.setVisibility(ProgressBar.VISIBLE);
+//        }
 
         geocoderReceiver = new GeocoderReceiver(new Handler());
 
@@ -472,27 +454,27 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         regressionStarted = true;
 
-        Log.e(TAG, requestBody.toString());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-            REGRESSION_URL,
-            requestBody, new Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i(TAG, "done");
-//                try {
-//                    JSONArray jsonArray = response.getJSONArray("result");
-//                    LocalDate sinceMay4th = LocalDate.of(2020, Month.MAY, 4);
-//                    LocalDate cur = LocalDate.now();
-//                    long daysdiff = ChronoUnit.DAYS.between(sinceMay4th, cur);
-//                    double intercept = jsonArray.getDouble(0);
-//                    double slope = jsonArray.getDouble(1);
-//                    double val = intercept + slope * daysdiff;
-//                    Log.d(TAG, "value for regression: " + val);
-//                } catch (JSONException e) {
-//                    Log.e(TAG, e.getMessage());
-//                }
-            }
-        }, new ErrorListener() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(REGRESSION_URL, requestBody,
+            new Listener<JSONObject>() {
+                @RequiresApi(api = VERSION_CODES.O)
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONArray jsonArray = response.getJSONArray("result");
+                        LocalDate sinceMay4th = LocalDate.of(2020, Month.MAY, 4);
+                        LocalDate cur = LocalDate.now();
+                        long daysdiff = ChronoUnit.DAYS.between(sinceMay4th, cur);
+                        double intercept = jsonArray.getDouble(0);
+                        double slope = jsonArray.getDouble(1);
+                        double val = intercept + slope * daysdiff;
+                        predictionText.setText(
+                            "For the state of " + state + ", we predict: " + (int) val
+                                + " cases today.");
+                    } catch (JSONException e) {
+                        Log.e(TAG, e.getMessage());
+                    }
+                }
+            }, new ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, error.toString());
@@ -507,77 +489,77 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void fillStates() {
-        states.put("Alabama","AL");
-        states.put("Alaska","AK");
-        states.put("Alberta","AB");
-        states.put("American Samoa","AS");
-        states.put("Arizona","AZ");
-        states.put("Arkansas","AR");
-        states.put("Armed Forces (AE)","AE");
-        states.put("Armed Forces Americas","AA");
-        states.put("Armed Forces Pacific","AP");
-        states.put("British Columbia","BC");
-        states.put("California","CA");
-        states.put("Colorado","CO");
-        states.put("Connecticut","CT");
-        states.put("Delaware","DE");
-        states.put("District Of Columbia","DC");
-        states.put("Florida","FL");
-        states.put("Georgia","GA");
-        states.put("Guam","GU");
-        states.put("Hawaii","HI");
-        states.put("Idaho","ID");
-        states.put("Illinois","IL");
-        states.put("Indiana","IN");
-        states.put("Iowa","IA");
-        states.put("Kansas","KS");
-        states.put("Kentucky","KY");
-        states.put("Louisiana","LA");
-        states.put("Maine","ME");
-        states.put("Manitoba","MB");
-        states.put("Maryland","MD");
-        states.put("Massachusetts","MA");
-        states.put("Michigan","MI");
-        states.put("Minnesota","MN");
-        states.put("Mississippi","MS");
-        states.put("Missouri","MO");
-        states.put("Montana","MT");
-        states.put("Nebraska","NE");
-        states.put("Nevada","NV");
-        states.put("New Brunswick","NB");
-        states.put("New Hampshire","NH");
-        states.put("New Jersey","NJ");
-        states.put("New Mexico","NM");
-        states.put("New York","NY");
-        states.put("Newfoundland","NF");
-        states.put("North Carolina","NC");
-        states.put("North Dakota","ND");
-        states.put("Northwest Territories","NT");
-        states.put("Nova Scotia","NS");
-        states.put("Nunavut","NU");
-        states.put("Ohio","OH");
-        states.put("Oklahoma","OK");
-        states.put("Ontario","ON");
-        states.put("Oregon","OR");
-        states.put("Pennsylvania","PA");
-        states.put("Prince Edward Island","PE");
-        states.put("Puerto Rico","PR");
-        states.put("Quebec","QC");
-        states.put("Rhode Island","RI");
-        states.put("Saskatchewan","SK");
-        states.put("South Carolina","SC");
-        states.put("South Dakota","SD");
-        states.put("Tennessee","TN");
-        states.put("Texas","TX");
-        states.put("Utah","UT");
-        states.put("Vermont","VT");
-        states.put("Virgin Islands","VI");
-        states.put("Virginia","VA");
-        states.put("Washington","WA");
-        states.put("West Virginia","WV");
-        states.put("Wisconsin","WI");
-        states.put("Wyoming","WY");
-        states.put("Yukon Territory","YT");
+        states.put("Alabama", "AL");
+        states.put("Alaska", "AK");
+        states.put("Alberta", "AB");
+        states.put("American Samoa", "AS");
+        states.put("Arizona", "AZ");
+        states.put("Arkansas", "AR");
+        states.put("Armed Forces (AE)", "AE");
+        states.put("Armed Forces Americas", "AA");
+        states.put("Armed Forces Pacific", "AP");
+        states.put("British Columbia", "BC");
+        states.put("California", "CA");
+        states.put("Colorado", "CO");
+        states.put("Connecticut", "CT");
+        states.put("Delaware", "DE");
+        states.put("District Of Columbia", "DC");
+        states.put("Florida", "FL");
+        states.put("Georgia", "GA");
+        states.put("Guam", "GU");
+        states.put("Hawaii", "HI");
+        states.put("Idaho", "ID");
+        states.put("Illinois", "IL");
+        states.put("Indiana", "IN");
+        states.put("Iowa", "IA");
+        states.put("Kansas", "KS");
+        states.put("Kentucky", "KY");
+        states.put("Louisiana", "LA");
+        states.put("Maine", "ME");
+        states.put("Manitoba", "MB");
+        states.put("Maryland", "MD");
+        states.put("Massachusetts", "MA");
+        states.put("Michigan", "MI");
+        states.put("Minnesota", "MN");
+        states.put("Mississippi", "MS");
+        states.put("Missouri", "MO");
+        states.put("Montana", "MT");
+        states.put("Nebraska", "NE");
+        states.put("Nevada", "NV");
+        states.put("New Brunswick", "NB");
+        states.put("New Hampshire", "NH");
+        states.put("New Jersey", "NJ");
+        states.put("New Mexico", "NM");
+        states.put("New York", "NY");
+        states.put("Newfoundland", "NF");
+        states.put("North Carolina", "NC");
+        states.put("North Dakota", "ND");
+        states.put("Northwest Territories", "NT");
+        states.put("Nova Scotia", "NS");
+        states.put("Nunavut", "NU");
+        states.put("Ohio", "OH");
+        states.put("Oklahoma", "OK");
+        states.put("Ontario", "ON");
+        states.put("Oregon", "OR");
+        states.put("Pennsylvania", "PA");
+        states.put("Prince Edward Island", "PE");
+        states.put("Puerto Rico", "PR");
+        states.put("Quebec", "QC");
+        states.put("Rhode Island", "RI");
+        states.put("Saskatchewan", "SK");
+        states.put("South Carolina", "SC");
+        states.put("South Dakota", "SD");
+        states.put("Tennessee", "TN");
+        states.put("Texas", "TX");
+        states.put("Utah", "UT");
+        states.put("Vermont", "VT");
+        states.put("Virgin Islands", "VI");
+        states.put("Virginia", "VA");
+        states.put("Washington", "WA");
+        states.put("West Virginia", "WV");
+        states.put("Wisconsin", "WI");
+        states.put("Wyoming", "WY");
+        states.put("Yukon Territory", "YT");
     }
 
 }
