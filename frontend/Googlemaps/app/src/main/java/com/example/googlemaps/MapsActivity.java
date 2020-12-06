@@ -61,6 +61,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
+
 import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -407,6 +411,42 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+    public void getStateRegValues(){
+        String url = "https://covid-23.herokuapp.com/regression";
+        List<String> jsonResponses = new ArrayList<>();
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray jsonArray = response.getJSONArray("result");
+                    for(int i = 0; i < jsonArray.length(); i++) {
+                        if (i == 0) {
+                            double intercept = jsonArray.getDouble(i);
+                        }
+                        if (i == 1) {
+                            double slope = jsonArray.getDouble(i);
+                        }
+                        LocalDate sinceMay4th = LocalDate.of(2020, Month.MAY, 4);
+                        LocalDate cur = LocalDate.now();
+                        long daysdiff = ChronoUnit.DAYS.between(dateBefore, dateAfter);
+                        double val = intercept + slope * daysdiff;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
+
     }
 
 }
