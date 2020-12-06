@@ -458,15 +458,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 public void onResponse(JSONObject response) {
                     try {
                         JSONArray jsonArray = response.getJSONArray("result");
-                        LocalDate sinceMay4th = LocalDate.of(2020, Month.MAY, 4);
-                        LocalDate cur = LocalDate.now();
-                        long daysdiff = ChronoUnit.DAYS.between(sinceMay4th, cur);
+                        LocalDate start = LocalDate.of(2020, Month.MARCH, 4);
+                        LocalDate end = LocalDate.of(2020, Month.DECEMBER, 31);
+                        long daysdiff = ChronoUnit.DAYS.between(start, end);
                         double intercept = jsonArray.getDouble(0);
                         double slope = jsonArray.getDouble(1);
+                        Log.d("intercept", String.valueOf(intercept));
+                        Log.d("sloep", String.valueOf(slope));
                         double val = intercept + slope * daysdiff;
                         predictionText.setText(
                             "For the state of " + state + ", we predict: " + (int) val
-                                + " cases today.");
+                                + " cases by the end of the year.");
                     } catch (JSONException e) {
                         Log.e(TAG, e.getMessage());
                     }
