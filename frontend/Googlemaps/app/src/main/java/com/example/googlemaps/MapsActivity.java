@@ -72,11 +72,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     FusedLocationProviderClient fusedLocationClient;
     Button btnSetting;
     Button prediction;
+    Button news;
     FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener  authStateListener;
+    private FirebaseAuth.AuthStateListener authStateListener;
     private GeocoderReceiver geocoderReceiver;
-    private Button btGeocoder;
-    protected String locality;
+    protected String state;
     String coordinates;
 
     @Override
@@ -84,11 +84,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         btnSetting = findViewById(R.id.setting);
-        btGeocoder = findViewById(R.id.btGeocoder);
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
         }
-        prediction =(Button) findViewById(R.id.prediction);
+        prediction = findViewById(R.id.prediction);
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -123,14 +122,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-        btGeocoder.setOnClickListener(new View.OnClickListener() {
+        news = findViewById(R.id.news);
+        geocoderReceiver = new GeocoderReceiver(new Handler());
+
+        // If news button is clicked, GeocoderIntentService is activated
+        news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mMap.isMyLocationEnabled()) {
                     startIntentService();
-                    Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
-                    intent.putExtra("State name", locality);
-                    startActivity(intent);
+                    // Uncomment this to send state to NewsActivity
+                    // Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
+                    // intent.putExtra("State", state);
+                    // startActivity(intent);
                 }
             }
         });
@@ -367,7 +371,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
-            locality = resultData.getString("result");
+            state = resultData.getString("result");
+            if (resultCode == 0) {
+                Toast.makeText(MapsActivity.this, "State = " + state, Toast.LENGTH_LONG).show();
+            }
         }
     }
 

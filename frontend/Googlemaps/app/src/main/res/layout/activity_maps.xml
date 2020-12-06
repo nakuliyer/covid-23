@@ -16,7 +16,7 @@
     <Button
         android:layout_width="45mm"
         android:layout_height="wrap_content"
-        android:id="@+id/btGeocoder"
+        android:id="@+id/news"
         android:text="See News For This State"
         android:fontFamily="@font/muli_black"
         android:textColor="@android:color/white"

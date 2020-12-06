@@ -61,14 +61,14 @@ public class GeocoderIntentService extends IntentService {
             deliverResult(1, errorMessage);
         } else {
             // Result code 0 = Success
-            // Use coordinates to retrieve locality (state)
+            // Use coordinates to retrieve state
             Address address = addresses.get(0);
-            String locality = address.getLocality();
-            deliverResult(0, locality);
+            String state = address.getAdminArea();
+            deliverResult(0, state);
         }
     }
 
-    // Sends locality (code 0) or error message (code 1) to receiver
+    // Sends state (code 0) or error message (code 1) to receiver
     private void deliverResult(int resultCode, String message) {
         Bundle bundle = new Bundle();
         bundle.putString("result", message);
