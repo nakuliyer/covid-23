@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="435e6300-1c1d-4b1f-bec8-71dfcf21dd74" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/java/com/example/googlemaps/MapsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/java/com/example/googlemaps/MapsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/res/layout/activity_maps.xml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Googlemaps/app/src/main/res/layout/activity_maps.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +67,7 @@
       <updated>1606872367359</updated>
       <workItem from="1606872375053" duration="351000" />
       <workItem from="1606872734693" duration="521000" />
-      <workItem from="1607249256545" duration="266000" />
+      <workItem from="1607249256545" duration="403000" />
     </task>
     <servers />
   </component>
