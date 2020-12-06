@@ -463,8 +463,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         long daysdiff = ChronoUnit.DAYS.between(start, end);
                         double intercept = jsonArray.getDouble(0);
                         double slope = jsonArray.getDouble(1);
-                        Log.d("intercept", String.valueOf(intercept));
-                        Log.d("sloep", String.valueOf(slope));
                         double val = intercept + slope * daysdiff;
                         predictionText.setText(
                             "For the state of " + state + ", we predict: " + (int) val
