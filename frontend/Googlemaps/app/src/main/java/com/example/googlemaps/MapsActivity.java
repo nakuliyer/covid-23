@@ -149,9 +149,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 if (mMap.isMyLocationEnabled()) {
                     startIntentService();
                     // Uncomment this to send state to NewsActivity
-                    // Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
-                    // intent.putExtra("State", state);
-                    // startActivity(intent);
+                     Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
+                     intent.putExtra("State", state);
+                     startActivity(intent);
                 }
             }
         });

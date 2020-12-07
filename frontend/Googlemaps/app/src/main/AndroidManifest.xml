@@ -95,6 +95,7 @@
             android:name=".BackgroundLocationUpdateService"
             android:enabled="true"
             android:process=":background_service" />
+        <activity android:name=".NewsActivity"/>
 
     </application>
 
