@@ -415,6 +415,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
     }
 
+    public void onGoToStatistics(MenuItem mi) {
+        startActivity(new Intent(getApplicationContext(), StatsActivity.class));
+    }
+
     public void onGoToContactTracing(MenuItem mi) {
         startActivity(new Intent(getApplicationContext(), ContactTracingActivity.class));
     }
