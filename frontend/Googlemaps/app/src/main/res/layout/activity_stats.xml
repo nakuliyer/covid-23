@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="UseSwitchCompatOrMaterialXml"
+    tools:layout_editor_absoluteX="116dp"
+    tools:layout_editor_absoluteY="181dp">
+
+<!--    <Switch-->
+<!--      android:id="@+id/switch1"-->
+<!--      android:layout_width="wrap_content"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:layout_marginTop="80dp"-->
+<!--      android:layout_marginRight="30dp"-->
+<!--      android:layout_gravity="right"-->
+<!--      android:text="Use Percentages" />-->
+
+    <TextView
+      android:id="@+id/st_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="30dp"
+      android:layout_marginStart="50dp"
+      android:layout_marginEnd="50dp"
+      android:layout_marginLeft="50dp"
+      android:layout_marginRight="50dp"
+      android:fontFamily="@font/muli_black"
+      android:gravity="center_horizontal"
+      android:text="Cases Per Day Stats"
+      android:textSize="24dp" />
+
+    <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="80dp">
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+          android:id="@+id/champaign_il_label"
+          android:textStyle="bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:layout_marginStart="30dp"
+          android:layout_marginLeft="30dp"
+          android:text="Champaign, IL"
+          android:textSize="16dp" />
+        <com.github.mikephil.charting.charts.LineChart
+          android:id="@+id/champaign_data"
+          android:layout_width="match_parent"
+          android:layout_height="200dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginLeft="30dp"
+          android:layout_marginRight="30dp" />
+        <TextView
+          android:id="@+id/state_data_label"
+          android:textStyle="bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:layout_marginStart="30dp"
+          android:layout_marginLeft="30dp"
+          android:text="Illinois"
+          android:textSize="16dp" />
+        <com.github.mikephil.charting.charts.LineChart
+          android:id="@+id/illinois_data"
+          android:layout_width="match_parent"
+          android:layout_height="200dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginLeft="30dp"
+          android:layout_marginRight="30dp" />
+        <TextView
+          android:id="@+id/us_data_label"
+          android:textStyle="bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:layout_marginStart="30dp"
+          android:layout_marginLeft="30dp"
+          android:text="United States"
+          android:textSize="16dp" />
+        <com.github.mikephil.charting.charts.LineChart
+          android:id="@+id/national_data"
+          android:layout_width="match_parent"
+          android:layout_height="200dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginLeft="30dp"
+          android:layout_marginRight="30dp" />
+      </LinearLayout>
+    </ScrollView>
+
+
+  </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

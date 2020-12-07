@@ -91,6 +91,14 @@
                 android:value="com.example.googlemaps.LoginActivity" />
         </activity>
 
+        <activity
+          android:name=".StatsActivity"
+          android:label="StatsActivity">
+            <meta-data
+              android:name="android.support.PARENT_ACTIVITY"
+              android:value="com.example.googlemaps.LoginActivity" />
+        </activity>
+
         <service
             android:name=".BackgroundLocationUpdateService"
             android:enabled="true"
