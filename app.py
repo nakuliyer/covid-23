@@ -81,6 +81,7 @@ def routine_delete_all(max_period=1.21e+9):
     m.routine_delete(max_period)
     m = Locations()
     m.routine_delete(max_period)
+    return {"success": True}
 
 
 @app.route("/champaign")
